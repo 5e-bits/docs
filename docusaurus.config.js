@@ -35,13 +35,9 @@ const config = {
     /** @type {import('docusaurus-preset-openapi').ThemeConfig} */
     ({
       image: "https://www.dnd5eapi.co/public/DnD-5e-meta-4k.png",
-      announcementBar: {
-        content: "Join us on our community <a target='_blank' rel='noopener noreferrer' href='https://discord.gg/TQuYTv7'>Discord</a>!", 
-      },
-      colorMode: {
-        defaultMode: "light",
-        disableSwitch: true,
-      },
+      // announcementBar: {
+      //   content: "Join us on our community <a target='_blank' rel='noopener noreferrer' href='https://discord.gg/TQuYTv7'>Discord</a>!", 
+      // },
       metadata: [
         {
           name: "keywords",
