@@ -16,7 +16,7 @@ function HomepageHeader() {
         <div className={styles.buttons}>
           <Link
             className="button button--secondary button--lg"
-            to="/docs/tutorial/getting-started"
+            to="/docs/tutorials/basic/getting-started"
           >
             Beginner Tutorial - 5min ⏱️
           </Link>
@@ -26,7 +26,7 @@ function HomepageHeader() {
             }}></span>
           <Link
             className="button button--secondary button--lg"
-            to="/docs/tutorial-advanced/getting-started"
+            to="/docs/tutorials/advanced/getting-started"
           >
             Advanced Tutorial - 30min ⏱️
           </Link>
