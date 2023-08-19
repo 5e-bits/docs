@@ -16,9 +16,9 @@ function HomepageHeader() {
         <div className={styles.buttons}>
           <Link
             className="button button--secondary button--lg"
-            to="/docs/docs/tutorials/basic/getting-started"
+            to="/docs/docs/tutorials/beginner/getting-started"
           >
-            Beginner Tutorial - 5min ⏱️
+            Basic Tutorial - 1min ⏱️
           </Link>
         </div>
       </div>
@@ -29,10 +29,7 @@ function HomepageHeader() {
 export default function Home() {
   const { siteConfig } = useDocusaurusContext();
   return (
-    <Layout
-      title={`${siteConfig.title}`}
-      description={`${siteConfig.tagline}`}
-    >
+    <Layout title={`${siteConfig.title}`} description={`${siteConfig.tagline}`}>
       <HomepageHeader />
       <main>
         <HomepageFeatures />
