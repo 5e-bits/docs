@@ -1,10 +1,17 @@
+import LearningObjectives from '@site/src/components/LearningObjectives';
+
 # Discover D&D Races with Shell Scripting
 
-Hey there, aspiring adventurers and young developers! 🌟 Are you ready to dive into the mystical world of Dungeons & Dragons and create your own interactive race search tool using the power of the command line? Well, grab your virtual dice, because we're about to embark on a coding quest! 🎲🧙‍♀️
+<LearningObjectives objectives={[
+    "Learn to use cURL", 
+    "Learn to write a simple Bash script", 
+    "Learn to make a script interactive"
+]}/>
+
 
 ## Preparing Your Bash Adventure
 
-Before we set off on our coding journey, make sure you have these magical items:
+Before we set off on our coding journey, make sure you have these:
 
 1. A command-line terminal (Bash)
 2. An internet connection
@@ -17,11 +24,10 @@ Before we set off on our coding journey, make sure you have these magical items:
     Open your command-line terminal and let's cast our first spell to fetch D&D race information using the mighty `curl` command. Type or copy-paste the following:
 
     ```bash
-    curl -L 'https://www.dnd5eapi.co/api/races/dwarf' \
-    -H 'Accept: application/json'
+    curl -L 'https://www.dnd5eapi.co/api/races/dwarf' -H 'Accept: application/json'
     ```
 
-    When you hit Enter, you'll unveil the mystical details of the D&D Dwarf race!
+    When you hit Enter, you'll unveil the details of the D&D Dwarf race!
 
 2. **Create Your Own Spell (Bash Script):**
 
@@ -36,13 +42,12 @@ Before we set off on our coding journey, make sure you have these magical items:
 
     read -p "Enter the name of a D&D race: " race_name
 
-    curl -L "https://www.dnd5eapi.co/api/races/$race_name" \
-    -H 'Accept: application/json'
+    curl -L "https://www.dnd5eapi.co/api/races/$race_name" -H 'Accept: application/json'
     ```
 
 3. **Enchant Your Script:**
 
-    Before you can use your script, you'll need to make it executable. In your terminal, type:
+    Before you can use your script, you'll need to make it executable (aka runnable). In your terminal, type:
 
     ```bash
     chmod +x dnd_race_search.sh
@@ -50,7 +55,7 @@ Before we set off on our coding journey, make sure you have these magical items:
 
 4. **Embark on Your Quest:**
 
-    Cast your spell and run your enchanted script:
+    Cast your spell and run your script:
 
     ```bash
     ./dnd_race_search.sh
@@ -94,6 +99,5 @@ Enter the name of a D&D race: dwarf
 
 ## Celebrate Your Coding Victory!
 
-Congratulations, young adventurers! You've crafted your very own D&D Race Search Tool using the magical language of Bash. You can now explore different races and learn about their unique abilities, traits, and more. Your journey has just begun, and there's so much more to discover in the realm of coding and Dungeons & Dragons. May your code be bug-free and your rolls be critical hits! 🎉🏰🧝‍♂️
+Congratulations, young adventurers! You've crafted your very own D&D Race Search Tool using Bash scripting. You can now explore different races and learn about their unique abilities, traits, and more. Your journey has just begun, and there's so much more to discover in the realm of coding and Dungeons & Dragons. May your code be bug-free and your rolls be critical hits! 🎉🏰🧝‍♂️
 
-Remember, coding is like a grand adventure. Keep exploring, learning, and having fun along the way! Happy coding! 🌟🐉👾

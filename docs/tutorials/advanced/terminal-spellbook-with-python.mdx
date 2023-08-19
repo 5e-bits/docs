@@ -1,14 +1,13 @@
+import LearningObjectives from '@site/src/components/LearningObjectives';
+
 # Command Line Spellbook with Python
 
-Welcome to this step-by-step tutorial on building an interactive command-line spellbook using Python! Whether you're a beginner or have some experience with Python, this tutorial will guide you through creating a simple tool to explore Dungeons & Dragons 5th Edition (D&D 5e) spells right from your terminal.
-
-## Prerequisites
-
-Before we begin, make sure you have the following:
-
-1. Basic understanding of Python programming.
-2. A code editor (e.g., Visual Studio Code) installed on your computer.
-3. Familiarity with making HTTP requests in Python.
+<LearningObjectives objectives={[
+    "Learn how to interact with APIs using Python",
+    "Learn to write a simple Python script",
+    "Learn to make a script interactive",
+    "Create a simple tool to explore D&D spells right from your terminal"
+]}/>
 
 ## Setting Up the Project
 
@@ -49,7 +48,7 @@ def main():
             print("1 - List all spells")
             print("2 - Search for a spell by name")
             print("3 - Exit")
-            
+
             choice = input("Enter your choice: ")
 
             if choice == '1':
