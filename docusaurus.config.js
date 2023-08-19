@@ -14,8 +14,7 @@ const config = {
   onBrokenMarkdownLinks: "warn",
   favicon: "img/favicon.ico",
   organizationName: "5e-bits", // Usually your GitHub org/user name.
-  projectName: "5e-srd-api", // Usually your repo name.
-
+  projectName: "docs", // Usually your repo name.
   presets: [
     [
       "docusaurus-preset-openapi",
