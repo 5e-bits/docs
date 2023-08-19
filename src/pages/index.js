@@ -20,16 +20,6 @@ function HomepageHeader() {
           >
             Beginner Tutorial - 5min ⏱️
           </Link>
-          <span   
-            style={{
-              padding: "10px",
-            }}></span>
-          <Link
-            className="button button--secondary button--lg"
-            to="/docs/docs/tutorials/advanced/getting-started"
-          >
-            Advanced Tutorial - 30min ⏱️
-          </Link>
         </div>
       </div>
     </header>
