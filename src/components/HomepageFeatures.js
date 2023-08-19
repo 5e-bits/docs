@@ -4,32 +4,34 @@ import styles from "./HomepageFeatures.module.css";
 
 const FeatureList = [
   {
-    title: "Easy to Use",
-    Svg: require("../../static/img/undraw_docusaurus_mountain.svg").default,
+    title: "Tutorials",
+    Svg: require("../../static/img/teacher.svg").default,
     description: (
       <>
-        Docusaurus was designed from the ground up to be easily installed and
-        used to get your website up and running quickly.
+        If you're a professional developer or a beginner just starting your
+        journey, we've got a curated selection of tutorials and example projects
+        to get you building with the API.
       </>
     ),
   },
   {
-    title: "Focus on What Matters",
-    Svg: require("../../static/img/undraw_docusaurus_tree.svg").default,
+    title: "API Reference",
+    Svg: require("../../static/img/reference.svg").default,
     description: (
       <>
-        Docusaurus lets you focus on your docs, and we&apos;ll do the chores. Go
-        ahead and move your docs into the <code>docs</code> directory.
+        Jump straight into the API documentation. If you want to see what data
+        the API has to offer along with some code examples in popular languages,
+        this is the place for you.
       </>
     ),
   },
   {
-    title: "Powered by React",
-    Svg: require("../../static/img/undraw_docusaurus_react.svg").default,
+    title: "FAQ",
+    Svg: require("../../static/img/faq.svg").default,
     description: (
       <>
-        Extend or customize your website layout by reusing React. Docusaurus can
-        be extended while reusing the same header and footer.
+        Got questions about the the API? Check out our FAQ and see if we've
+        already got an answer for ya.
       </>
     ),
   },

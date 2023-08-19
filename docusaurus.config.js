@@ -7,7 +7,7 @@ const darkCodeTheme = require("prism-react-renderer/themes/dracula");
 /** @type {import('@docusaurus/types').Config} */
 const config = {
   title: "D&D 5e SRD API",
-  tagline: "An API for the D&D 5e SRD",
+  tagline: "REST + GraphQL API for the 5e SRD database",
   url: "https://5e-bits.github.io",
   baseUrl: "/docs/",
   onBrokenLinks: "throw",
