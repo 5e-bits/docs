@@ -9,7 +9,7 @@ const config = {
   title: "D&D 5e SRD API",
   tagline: "An API for the D&D 5e SRD",
   url: "https://dnd5eapi.co",
-  baseUrl: "/",
+  baseUrl: "/docs/",
   onBrokenLinks: "throw",
   onBrokenMarkdownLinks: "warn",
   favicon: "img/favicon.ico",
