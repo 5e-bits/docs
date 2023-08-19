@@ -34,21 +34,21 @@ const config = {
   themeConfig:
     /** @type {import('docusaurus-preset-openapi').ThemeConfig} */
     ({
+      image: "https://www.dnd5eapi.co/public/DnD-5e-meta-4k.png",
+      announcementBar: {
+        content: "Join us on our community <a target='_blank' rel='noopener noreferrer' href='https://discord.gg/TQuYTv7'>Discord</a>!", 
+      },
+      colorMode: {
+        defaultMode: "light",
+        disableSwitch: true,
+      },
       metadata: [
         {
           name: "keywords",
           content: "Dungeons, Dragons, 5th, Edition, API, SRD",
         },
-        {
-          property: "og:image",
-          content: "https://www.dnd5eapi.co/public/DnD-5e-meta-4k.png",
-        },
         { name: "theme-color", content: "#D81921" },
         { property: "og:title", content: "D&D 5e SRD API" },
-        {
-          property: "og:description",
-          content: "REST API to access D&D 5th Edition SRD database",
-        },
         { property: "og:type", content: "website" },
         { property: "og:url", content: "https://5e-bits.github.io/docs/" },
       ],
