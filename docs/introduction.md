@@ -4,7 +4,7 @@ sidebar_position: 1
 
 # Introduction
 
-### :arrow_right: [Skip to the tutorials](/tutorials/)
+### :arrow_right: [Skip to the tutorials](/docs/docs/tutorials/)
 
 *If you wanna skip right into the tutorial, go ahead. We don't mind!*
 
@@ -12,7 +12,7 @@ sidebar_position: 1
 
 Welcome to the D&D 5e SRD API, the Dungeons & Dragons 5th Edition API! 
 
-This documentation should help you familiarize yourself with the resources available and how to consume them with HTTP requests. Read through the [Tutorial](/tutorials/) getting started section before you dive in. 
+This documentation should help you familiarize yourself with the resources available and how to consume them with HTTP requests. Read through the [Tutorial](/docs/docs/tutorials/) getting started section before you dive in. 
 
 Most of your problems should be solved just by reading through it.
 
