@@ -75,16 +75,6 @@ const config = {
         style: "dark",
         links: [
           {
-            title: "Docs",
-            items: [
-              {
-                type: "doc",
-                docId: "tutorials/index",
-                label: "Tutorials",
-              },
-            ],
-          },
-          {
             title: "Community",
             items: [
               {
