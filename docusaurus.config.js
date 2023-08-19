@@ -15,6 +15,7 @@ const config = {
   favicon: "img/favicon.ico",
   organizationName: "5e-bits", // Usually your GitHub org/user name.
   projectName: "docs", // Usually your repo name.
+  themes: [require.resolve("@easyops-cn/docusaurus-search-local")],
   presets: [
     [
       "docusaurus-preset-openapi",
@@ -33,6 +34,24 @@ const config = {
   themeConfig:
     /** @type {import('docusaurus-preset-openapi').ThemeConfig} */
     ({
+      metadata: [
+        {
+          name: "keywords",
+          content: "Dungeons, Dragons, 5th, Edition, API, SRD",
+        },
+        {
+          property: "og:image",
+          content: "https://www.dnd5eapi.co/public/DnD-5e-meta-4k.png",
+        },
+        { name: "theme-color", content: "#D81921" },
+        { property: "og:title", content: "D&D 5e SRD API" },
+        {
+          property: "og:description",
+          content: "REST API to access D&D 5th Edition SRD database",
+        },
+        { property: "og:type", content: "website" },
+        { property: "og:url", content: "https://5e-bits.github.io/docs/" },
+      ],
       navbar: {
         title: "D&D 5e SRD API",
         logo: {
