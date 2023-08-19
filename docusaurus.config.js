@@ -8,13 +8,14 @@ const darkCodeTheme = require("prism-react-renderer/themes/dracula");
 const config = {
   title: "D&D 5e SRD API",
   tagline: "An API for the D&D 5e SRD",
-  url: "https://dnd5eapi.co",
+  url: "https://5e-bits.github.io",
   baseUrl: "/docs/",
   onBrokenLinks: "throw",
   onBrokenMarkdownLinks: "warn",
   favicon: "img/favicon.ico",
   organizationName: "5e-bits", // Usually your GitHub org/user name.
   projectName: "docs", // Usually your repo name.
+  trailingSlash: false,
   themes: [require.resolve("@easyops-cn/docusaurus-search-local")],
   presets: [
     [
@@ -36,7 +37,7 @@ const config = {
     ({
       image: "https://www.dnd5eapi.co/public/DnD-5e-meta-4k.png",
       // announcementBar: {
-      //   content: "Join us on our community <a target='_blank' rel='noopener noreferrer' href='https://discord.gg/TQuYTv7'>Discord</a>!", 
+      //   content: "Join us on our community <a target='_blank' rel='noopener noreferrer' href='https://discord.gg/TQuYTv7'>Discord</a>!",
       // },
       metadata: [
         {
