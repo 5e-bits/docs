@@ -76,11 +76,21 @@ const config = {
             followRedirect: true,
             trimRequestBody: true,
           },
-        }, 
+        },
+        {
+          tabName: "Rust",
+          highlight: "rust",
+          language: "rust",
+          variant: "reqwest",
+          options: {
+            followRedirect: true,
+            trimRequestBody: true,
+          },
+        },
       ],
       image: "https://www.dnd5eapi.co/public/DnD-5e-meta-4k.png",
       // announcementBar: {
-      //   content: "Join us on our community <a target='_blank' rel='noopener noreferrer' href='https://discord.gg/TQuYTv7'>Discord</a>!", 
+      //   content: "Join us on our community <a target='_blank' rel='noopener noreferrer' href='https://discord.gg/TQuYTv7'>Discord</a>!",
       // },
       metadata: [
         {
@@ -157,6 +167,15 @@ const config = {
       prism: {
         theme: lightCodeTheme,
         darkTheme: darkCodeTheme,
+        additionalLanguages: [
+          "powershell",
+          "csharp",
+          "java",
+          "kotlin",
+          "swift",
+          "rust",
+          "ruby",
+        ],
       },
     }),
 };
