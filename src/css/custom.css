@@ -25,7 +25,7 @@
   --ifm-color-primary-lightest: #fda6a6;
 }
 
-.api-code-tab {
+.api-code-tab-group {
   display: flex;
 }
 
@@ -39,8 +39,12 @@
   }
 }
 
-
-
+.docusaurus-highlight-code-line {
+  background-color: rgba(0, 0, 0, 0.1);
+  display: block;
+  margin: 0 calc(-1 * var(--ifm-pre-padding));
+  padding: 0 var(--ifm-pre-padding);
+}
 
 html[data-theme="dark"] .docusaurus-highlight-code-line {
   background-color: rgba(0, 0, 0, 0.3);
