@@ -7,15 +7,15 @@ const darkCodeTheme = require("prism-react-renderer/themes/dracula");
 /** @type {import('@docusaurus/types').Config} */
 const config = {
   title: "D&D 5e SRD API",
-  tagline: "REST + GraphQL API for the 5e SRD database",
+  tagline: "An API for the D&D 5e SRD",
   url: "https://5e-bits.github.io",
+  trailingSlash: false,
   baseUrl: "/docs/",
   onBrokenLinks: "throw",
   onBrokenMarkdownLinks: "warn",
   favicon: "img/favicon.ico",
   organizationName: "5e-bits", // Usually your GitHub org/user name.
   projectName: "docs", // Usually your repo name.
-  trailingSlash: false,
   themes: [require.resolve("@easyops-cn/docusaurus-search-local")],
   presets: [
     [
@@ -76,11 +76,11 @@ const config = {
             followRedirect: true,
             trimRequestBody: true,
           },
-        },
+        }, 
       ],
       image: "https://www.dnd5eapi.co/public/DnD-5e-meta-4k.png",
       // announcementBar: {
-      //   content: "Join us on our community <a target='_blank' rel='noopener noreferrer' href='https://discord.gg/TQuYTv7'>Discord</a>!",
+      //   content: "Join us on our community <a target='_blank' rel='noopener noreferrer' href='https://discord.gg/TQuYTv7'>Discord</a>!", 
       // },
       metadata: [
         {
