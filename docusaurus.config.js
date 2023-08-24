@@ -58,20 +58,20 @@ const config = {
           },
         },
         {
-          tabName: "Go",
-          highlight: "go",
-          language: "go",
-          variant: "native",
+          tabName: "Python",
+          highlight: "python",
+          language: "python",
+          variant: "requests",
           options: {
             followRedirect: true,
             trimRequestBody: true,
           },
         },
         {
-          tabName: "Python",
-          highlight: "python",
-          language: "python",
-          variant: "requests",
+          tabName: "Go",
+          highlight: "go",
+          language: "go",
+          variant: "native",
           options: {
             followRedirect: true,
             trimRequestBody: true,
