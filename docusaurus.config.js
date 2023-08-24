@@ -35,6 +35,49 @@ const config = {
   themeConfig:
     /** @type {import('docusaurus-preset-openapi').ThemeConfig} */
     ({
+      languageTabs: [
+        {
+          tabName: "cURL",
+          highlight: "bash",
+          language: "curl",
+          variant: "curl",
+          options: {
+            longFormat: false,
+            followRedirect: true,
+            trimRequestBody: true,
+          },
+        },
+        {
+          tabName: "Javascript",
+          highlight: "javascript",
+          language: "javascript",
+          variant: "fetch",
+          options: {
+            ES6_enabled: true,
+            trimRequestBody: true,
+          },
+        },
+        {
+          tabName: "Go",
+          highlight: "go",
+          language: "go",
+          variant: "native",
+          options: {
+            followRedirect: true,
+            trimRequestBody: true,
+          },
+        },
+        {
+          tabName: "Python",
+          highlight: "python",
+          language: "python",
+          variant: "requests",
+          options: {
+            followRedirect: true,
+            trimRequestBody: true,
+          },
+        },
+      ],
       image: "https://www.dnd5eapi.co/public/DnD-5e-meta-4k.png",
       // announcementBar: {
       //   content: "Join us on our community <a target='_blank' rel='noopener noreferrer' href='https://discord.gg/TQuYTv7'>Discord</a>!",
