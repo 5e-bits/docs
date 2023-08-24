@@ -25,6 +25,23 @@
   --ifm-color-primary-lightest: #fda6a6;
 }
 
+.api-code-tab {
+  display: flex;
+}
+
+.api-code-tab { 
+  flex: 1 !important;
+}
+
+@media only screen and (max-width: 768px){
+  .api-code-tab-group {
+    display: block !important;
+  }
+}
+
+
+
+
 html[data-theme="dark"] .docusaurus-highlight-code-line {
   background-color: rgba(0, 0, 0, 0.3);
 }

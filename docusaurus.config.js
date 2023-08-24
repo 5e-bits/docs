@@ -78,15 +78,25 @@ const config = {
           },
         },
         {
-          tabName: "Rust",
-          highlight: "rust",
-          language: "rust",
-          variant: "reqwest",
+          tabName: "C#",
+          highlight: "csharp",
+          language: "csharp",
+          variant: "httpclient",
           options: {
             followRedirect: true,
             trimRequestBody: true,
           },
         },
+        {
+          tabName: "Java",
+          highlight: "java",
+          language: "java",
+          variant: "okhttp",
+          options: {
+            followRedirect: true,
+            trimRequestBody: true,
+          },
+        }
       ],
       image: "https://www.dnd5eapi.co/public/DnD-5e-meta-4k.png",
       // announcementBar: {
