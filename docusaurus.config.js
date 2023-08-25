@@ -64,6 +64,16 @@ const config = {
           },
         },
         {
+          tabName: "Python",
+          highlight: "python",
+          language: "python",
+          variant: "requests",
+          options: {
+            followRedirect: true,
+            trimRequestBody: true,
+          },
+        },
+        {
           tabName: "Go",
           highlight: "go",
           language: "go",
@@ -74,10 +84,20 @@ const config = {
           },
         },
         {
-          tabName: "Python",
-          highlight: "python",
-          language: "python",
-          variant: "requests",
+          tabName: "C#",
+          highlight: "csharp",
+          language: "csharp",
+          variant: "httpclient",
+          options: {
+            followRedirect: true,
+            trimRequestBody: true,
+          },
+        },
+        {
+          tabName: "Java",
+          highlight: "java",
+          language: "java",
+          variant: "okhttp",
           options: {
             followRedirect: true,
             trimRequestBody: true,
@@ -163,6 +183,15 @@ const config = {
       prism: {
         theme: lightCodeTheme,
         darkTheme: darkCodeTheme,
+        additionalLanguages: [
+          "powershell",
+          "csharp",
+          "java",
+          "kotlin",
+          "swift",
+          "rust",
+          "ruby",
+        ],
       },
     }),
 };
