@@ -2,11 +2,18 @@ import LearningObjectives from "@site/src/components/LearningObjectives";
 
 # Creating a Spell Card Library with React
 
-This tutorial assumes you have basic knowledge of React and JavaScript. By the end of this tutorial we'll have a web application that lists every spell in the game. We can use this as a jumping-off point for whatever our hearts desire!
+This tutorial assumes you have basic knowledge of React and JavaScript. Specifically,
+
+- [How to write JSX](https://react.dev/learn/writing-markup-with-jsx)
+- [How to make and call asynchronous functions](https://javascript.info/async-await)
+
+You can brush up your knowledge on these subjects using the links provided and then drop back in!
+
+By the end of this tutorial we'll have a web application that lists every spell in the game. We can use this as a jumping-off point for whatever our hearts desire!
 
 - Add filters to only show spells of specific levels
 - Add a shuffle button that picks a random spell
-- etc. WIP TODO: Rule of 3
+- Add a search bar that searches through spell names & descriptions
 
 <LearningObjectives
   objectives={[
@@ -171,7 +178,7 @@ export default function App() {
     <div className="App">
       <ul className="spell-list">
         {spells.map((spell) => (
-          <SpellCard spell={spell} />
+          <SpellCard key={spell.index} spell={spell} />
         ))}
       </ul>
     </div>
