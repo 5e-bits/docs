@@ -91,7 +91,7 @@ If we run the function now, we'll get a lot more information from our spells. We
 
 `App.js` is where the bulk of our code will be. We have to load the spells when we mount the component, and then loop through our spells and render each one.
 
-```js title="/src/App.js"
+```jsx title="/src/App.js"
 import { useEffect, useState } from "react";
 import { getAllSpells } from "./api";
 import "./styles.css";
@@ -107,7 +107,7 @@ export default function App() {
     <div className="App">
       <ul>
         {spells.map((spell) => (
-          <li>{spell.name}</li>
+          <li key={spell.index}>{spell.name}</li>
         ))}
       </ul>
     </div>
@@ -115,8 +115,115 @@ export default function App() {
 }
 ```
 
-Alright! Now our app shows a bulleted list of spells. This is a great start, but we can make it look better. Let's hop into the css:
+Alright! Now our app shows a bulleted list of spells. This is a great start, but we can make it look better. First, let's create a SpellCard component and pull out some more info that we want from the spell object:
+
+```jsx title="/src/SpellCard.js"
+export default function SpellCard({ spell }) {
+  return (
+    <li className="spell-card">
+      <hgroup>
+        <h4>{spell.name}</h4>
+        <small>
+          {spell.level > 0 && `Level ${spell.level} `}
+          {spell.school.name}
+          {spell.level === 0 && " cantrip"}
+        </small>
+      </hgroup>
+      <div className="stats">
+        <p>
+          <strong>Casting Time</strong>
+          {spell.casting_time}
+        </p>
+        <p>
+          <strong>Range</strong>
+          {spell.range}
+        </p>
+        <p>
+          <strong>Components</strong>
+          {spell.components.join(", ")}
+        </p>
+        <p>
+          <strong>Duration</strong>
+          {spell.duration}
+        </p>
+      </div>
+    </li>
+  );
+}
+```
+
+Now that we have our separate component, we need to pull it into our App.js:
+
+```jsx title="/src/App.js"
+import { useEffect, useState } from "react";
+import { getAllSpells } from "./api";
+import SpellCard from "./SpellCard";
+import "./styles.css";
+
+export default function App() {
+  const [spells, setSpells] = useState([]);
+
+  useEffect(() => {
+    getAllSpells().then(setSpells);
+  }, []);
+
+  return (
+    <div className="App">
+      <ul className="spell-list">
+        {spells.map((spell) => (
+          <SpellCard spell={spell} />
+        ))}
+      </ul>
+    </div>
+  );
+}
+```
+
+And now that we have some more details displaying, let's hop into the styles and organize it a bit better
 
 ```css title="/src/styles.css"
+.App {
+  font-family: sans-serif;
+  text-align: center;
+}
 
+.spell-list {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: center;
+  gap: 16px;
+  padding: 0;
+  margin: 0;
+}
+
+.spell-card {
+  list-style: none;
+  max-width: 256px;
+  padding: 4px;
+}
+
+.spell-card hgroup {
+  margin-bottom: 4px;
+}
+
+.spell-card hgroup h4 {
+  margin-bottom: 4px;
+}
+
+.spell-card .stats {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+}
+
+.spell-card .stats strong {
+  text-align: center;
+}
+
+.spell-card .stats p {
+  display: flex;
+  flex-direction: column;
+  gap: 4px;
+  padding: 8px;
+  font-size: 0.75rem;
+}
 ```
