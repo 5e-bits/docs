@@ -2,7 +2,7 @@ import LearningObjectives from "@site/src/components/LearningObjectives";
 
 # Creating a Spell Card Library with React
 
-This tutorial assumes you have basic knowledge of React and JavaScript. Specifically,
+This tutorial assumes you have basic knowledge of CSS, React and JavaScript. Specifically,
 
 - [How to write JSX](https://react.dev/learn/writing-markup-with-jsx)
 - [How to make and call asynchronous functions](https://javascript.info/async-await)
@@ -188,49 +188,20 @@ export default function App() {
 
 And now that we have some more details displaying, let's hop into the styles and organize it a bit better
 
-```css title="/src/styles.css"
-.App {
-  font-family: sans-serif;
-  text-align: center;
-}
+<iframe
+  src="https://codesandbox.io/embed/d-d-5e-spell-cards-jsvnct?fontsize=14&hidenavigation=1&module=%2Fsrc%2Fstyles.css&theme=dark&view=editor"
+  style={{
+    width: "100%",
+    height: "500px",
+    border: 0,
+    borderRadius: "4px",
+    overflow: "hidden",
+  }}
+  title="D&amp;D 5e Spell Cards"
+  allow="accelerometer; ambient-light-sensor; camera; encrypted-media; geolocation; gyroscope; hid; microphone; midi; payment; usb; vr; xr-spatial-tracking"
+  sandbox="allow-forms allow-modals allow-popups allow-presentation allow-same-origin allow-scripts"
+></iframe>
 
-.spell-list {
-  display: flex;
-  flex-wrap: wrap;
-  justify-content: center;
-  gap: 16px;
-  padding: 0;
-  margin: 0;
-}
+Looking good! We can review [the entire project](https://codesandbox.io/s/d-d-5e-spell-cards-jsvnct) and see how all our code came together in the end!
 
-.spell-card {
-  list-style: none;
-  max-width: 256px;
-  padding: 4px;
-}
-
-.spell-card hgroup {
-  margin-bottom: 4px;
-}
-
-.spell-card hgroup h4 {
-  margin-bottom: 4px;
-}
-
-.spell-card .stats {
-  display: grid;
-  grid-template-columns: 1fr 1fr;
-}
-
-.spell-card .stats strong {
-  text-align: center;
-}
-
-.spell-card .stats p {
-  display: flex;
-  flex-direction: column;
-  gap: 4px;
-  padding: 8px;
-  font-size: 0.75rem;
-}
-```
+TODO: Add a loading indicator and/or load from cache
