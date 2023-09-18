@@ -16,7 +16,7 @@ In the [Getting Started](./getting-started.md) tutorial, we used `curl` to make 
 
 This is one of the defining features of a RESTful API: a URL corresponds to a resource. The RESTful endpoints of the D&D 5e SRD API follow this uniform interface to make it easy for us to fetch the resources we need, but they don't allow us much control over what data is returned by the API.
 
-For example, if we make a `GET` request to `https://www.dnd5eapi.co/api/monsters`, we will receive only the `index`, `name` and `url` of all the monsters in the SRD database. This is a sensible default, as it gives us the information we need to discover all the monsters, while keeping the response relatively lightweight by excluding unneccessary details. But what if I want to know more about a specific monster?
+For example, if we make a `GET` request to `https://www.dnd5eapi.co/api/monsters`, we will receive only the `index`, `name` and `url` of all the monsters in the SRD database. This is a sensible default, as it gives us the information we need to discover all the monsters, while keeping the response relatively lightweight by excluding unnecessary details. But what if I want to know more about a specific monster?
 
 Making a request to one of the `url`s provided, such as `/api/monsters/aboleth`, we will receive *all* of the data about the Aboleth, including its stats, actions, proficiencies, etc. But what if we just wanted to know the Aboleth's armor class? We've just wasted time and bandwidth transporting all that extra information.
 
@@ -31,7 +31,7 @@ Open the explorer in a new tab now so that you can follow along with the tutoria
 
 ![A screenshot of the Apollo Sandbox Explorer](/img/tutorial/graphql/01-explorer.png)
 
-On the left we can see the documentation - a list of all the resources we can query. In the middle are the textboxes where we can write our GraphQL query, as well as any variables that we might want to pass with the request. Finally on the right is the "Response" panel, where any results of queries we execute will be displayed.
+On the left we can see the documentation - a list of all the resources we can query. In the middle are the text boxes where we can write our GraphQL query, as well as any variables that we might want to pass with the request. Finally on the right is the "Response" panel, where any results of queries we execute will be displayed.
 
 ## Our First Query
 Let's start by getting a list of all the monsters in the database. To do this, we can build a query using the panel on the left-hand side of the explorer. Scroll down to "monsters" and click the <svg viewBox="0 0 24 24" role="checkbox" aria-checked="false" style={{width: '2ch', color: 'var(--ifm-color-primary-darker)', verticalAlign: 'text-top', marginInline: '0.25ch'}}><g fill="none" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="2"><path d="M12 7.5v9M7.5 12h9M12 .75C18.213.75 23.25 5.787 23.25 12S18.213 23.25 12 23.25.75 18.213.75 12 5.787.75 12 .75z"></path></g></svg> ("plus") icon to the left. You should then be presented with a list of attributes that we can request. You should also see the following code appear in the editor:
@@ -115,8 +115,4 @@ To pass variables, we can provide a JSON object along with our request, where ea
 Execute the query and we should see the same results as before, except this time we can request a different monster just by changing the value of our `index` variable. Take this opportunity to pass in different indices and observe how this affects the response.
 
 ## Next Steps
-Now that we can build and test a range of GraphQL queries, we are ready to apply these skills to a real project. The following tutorials build on what we've learned by bringing GraphQL together with other technologies to create a range of useful applications:
-
-- [Build a CSV dataset with GraphQL and Python](/#)
-- [Build a Bestiary with GraphQL and React](/#)
-- [Build a Spellbook App with GraphQL and Swift](/#)
+Now that we can build and test a range of GraphQL queries, we are ready to apply these skills to a real project. In future tutorials, we will bring together GraphQL and other languages and technologies to build fun and interesting tools.
