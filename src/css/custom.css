@@ -27,6 +27,7 @@
 
 .api-code-tab-group {
   display: flex;
+  flex-wrap: wrap;
 }
 
 .api-code-tab { 
