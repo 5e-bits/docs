@@ -96,9 +96,9 @@ If we run the function now, we'll get a lot more information from our spells. We
 
 ## Rendering our Spell Cards
 
-`App.js` is where the bulk of our code will be. We have to load the spells when we mount the component, and then loop through our spells and render each one.
+`App.jsx` is where the bulk of our code will be. We have to load the spells when we mount the component, and then loop through our spells and render each one.
 
-```jsx title="/src/App.js"
+```jsx title="/src/App.jsx"
 import { useEffect, useState } from "react";
 import { getAllSpells } from "./api";
 import "./styles.css";
@@ -124,7 +124,7 @@ export default function App() {
 
 Alright! Now our app shows a bulleted list of spells. This is a great start, but we can make it look better. First, let's create a SpellCard component and pull out some more info that we want from the spell object:
 
-```jsx title="/src/SpellCard.js"
+```jsx title="/src/SpellCard.jsx"
 export default function SpellCard({ spell }) {
   return (
     <li className="spell-card">
@@ -159,9 +159,9 @@ export default function SpellCard({ spell }) {
 }
 ```
 
-Now that we have our separate component, we need to pull it into our App.js:
+Now that we have our separate component, we need to pull it into our App.jsx:
 
-```jsx title="/src/App.js"
+```jsx title="/src/App.jsx"
 import { useEffect, useState } from "react";
 import { getAllSpells } from "./api";
 import SpellCard from "./SpellCard";
@@ -212,7 +212,7 @@ There are plenty of libraries that can help with this like [Reacy Query](https:/
 
 First, we'll add an indicator that we're loading. Let's just keep it plain text for now...
 
-```jsx title="/src/App.js"
+```jsx title="/src/App.jsx"
 return (
   <div className="App">
     {spells.length === 0 && <span className="loading">Loading...</span>}
@@ -227,7 +227,7 @@ return (
 
 And then we'll modify our useEffect to use [localStorage](https://developer.mozilla.org/en-US/docs/Web/API/Window/localStorage) to save our spells and load them if available:
 
-```jsx title="/src/App.js"
+```jsx title="/src/App.jsx"
 useEffect(() => {
   const savedSpells = localStorage.getItem("spells");
   if (savedSpells) setSpells(JSON.parse(savedSpells));
