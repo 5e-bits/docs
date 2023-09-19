@@ -16,7 +16,13 @@ const config = {
   favicon: "img/favicon.ico",
   organizationName: "5e-bits", // Usually your GitHub org/user name.
   projectName: "docs", // Usually your repo name.
-  themes: [require.resolve("@easyops-cn/docusaurus-search-local")],
+  markdown: {
+    mermaid: true,
+  },
+  themes: [
+    require.resolve("@easyops-cn/docusaurus-search-local"),
+    "@docusaurus/theme-mermaid",
+  ],
   presets: [
     [
       "docusaurus-preset-openapi",
@@ -96,7 +102,7 @@ const config = {
             followRedirect: true,
             trimRequestBody: true,
           },
-        }
+        },
       ],
       image: "https://www.dnd5eapi.co/public/DnD-5e-meta-4k.png",
       // announcementBar: {
