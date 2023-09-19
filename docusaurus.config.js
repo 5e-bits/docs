@@ -37,7 +37,9 @@ const config = {
       }),
     ],
   ],
-
+  plugins: [
+    "./src/plugins/dynamic-tutorials-list"
+  ],
   themeConfig:
     /** @type {import('docusaurus-preset-openapi').ThemeConfig} */
     ({
