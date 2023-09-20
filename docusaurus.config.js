@@ -56,6 +56,16 @@ const config = {
           },
         },
         {
+          tabName: "PowerShell",
+          highlight: "powershell",
+          language: "powershell",
+          variant: "RestMethod",
+          options: {
+            followRedirect: true,
+            trimRequestBody: true,
+          },
+        },
+        {
           tabName: "Javascript",
           highlight: "javascript",
           language: "javascript",
@@ -80,6 +90,16 @@ const config = {
           highlight: "go",
           language: "go",
           variant: "native",
+          options: {
+            followRedirect: true,
+            trimRequestBody: true,
+          },
+        },
+        {
+          tabName: "Swift",
+          highlight: "swift",
+          language: "swift",
+          variant: "URLSession",
           options: {
             followRedirect: true,
             trimRequestBody: true,
