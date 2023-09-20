@@ -121,7 +121,7 @@ const config = {
           language: "java",
           variant: "okhttp",
           options: {
-            followRedirect: false,
+            followRedirect: true,
             trimRequestBody: true,
           },
         },
