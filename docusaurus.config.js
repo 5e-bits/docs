@@ -131,7 +131,7 @@ const config = {
             type: "doc",
             docId: "introduction",
             position: "left",
-            label: "Get Started",
+            label: "Docs",
           },
           {
             type: "doc",
@@ -139,7 +139,11 @@ const config = {
             position: "left",
             label: "Tutorials",
           },
-          { to: "/api", label: "API", position: "left" },
+          {
+            to: "/api",
+            position: "left",
+            label: "API",
+          },
           {
             type: "doc",
             docId: "faq",
