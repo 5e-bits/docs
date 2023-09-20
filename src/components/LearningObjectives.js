@@ -5,8 +5,8 @@ export default function LearningObjectives({ children, objectives }) {
     <>
       <h2>✅ Learning Objectives</h2>
       <ol>
-        {objectives.map((obj) => {
-          return <li>{obj}</li>;
+        {objectives.map((obj, i) => {
+          return <li key={i}>{obj}</li>;
         })}
       </ol>
       <div>{children}</div>
