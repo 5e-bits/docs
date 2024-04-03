@@ -10,15 +10,15 @@ sidebar_position: 1
 
 ### :wave: Welcome
 
-Welcome to the D&D 5e SRD API, the Dungeons & Dragons 5th Edition API! 
+Welcome to the D&D 5e SRD API, the Dungeons & Dragons 5th Edition API!
 
-This documentation should help you familiarize yourself with the resources available and how to consume them with HTTP requests. Read through the [Tutorial](/docs/tutorials/) getting started section before you dive in. 
+This documentation should help you familiarize yourself with the resources available and how to consume them with HTTP requests. Read through the [Tutorial](/docs/tutorials/) getting started section before you dive in.
 
 Most of your problems should be solved just by reading through it.
 
 ### :lock: Authentication
 
-This is a completely open API. **No authentication is required to query and get data**. This also means that we've limited what you can do to just `GET`-ing the data. 
+This is a completely open API. **No authentication is required to query and get data**. This also means that we've limited what you can do to just `GET`-ing the data.
 
 If you find a mistake in the data, feel free to [message us](https://discord.gg/TQuYTv7)!
 

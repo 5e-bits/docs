@@ -1,6 +1,12 @@
 import React from "react";
 
-export default function LearningObjectives({ children, objectives }) {
+export default function LearningObjectives({
+  children,
+  objectives,
+}: {
+  children: React.ReactNode;
+  objectives: string[];
+}) {
   return (
     <>
       <h2>✅ Learning Objectives</h2>

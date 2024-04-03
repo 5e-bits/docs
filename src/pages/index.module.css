@@ -14,7 +14,7 @@
   background-position: bottom center, 50%, 50%;
 }
 
-@media screen and (max-width: 966px) {
+@media screen and (max-width: 996px) {
   .heroBanner {
     padding: 2rem;
   }
