@@ -37,7 +37,6 @@ function readCategory(category: string, dir: string, baseUrl: string) {
         mdTitle !== null ? mdTitle[0].substring(1).trim() : makeTitle(name);
 
       const href = baseUrl + `tutorials/${category}/${name}`;
-      console.log(href);
 
       return { name, title, href };
     });
