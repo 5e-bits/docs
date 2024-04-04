@@ -879,11 +879,13 @@
                   "results": [
                     {
                       "index": "power-word-kill",
+                      "level": 9,
                       "name": "Power Word Kill",
                       "url": "/api/spells/power-word-kill"
                     },
                     {
                       "index": "true-polymorph",
+                      "level": 9,
                       "name": "True Polymorph",
                       "url": "/api/spells/true-polymorph"
                     }
@@ -1248,26 +1250,31 @@
                   "results": [
                     {
                       "index": "dominate-monster",
+                      "level": 8,
                       "name": "Dominate Monster",
                       "url": "/api/spells/dominate-monster"
                     },
                     {
                       "index": "earthquake",
+                      "level": 8,
                       "name": "Earthquake",
                       "url": "/api/spells/earthquake"
                     },
                     {
                       "index": "incendiary-cloud",
+                      "level": 8,
                       "name": "Incendiary Cloud",
                       "url": "/api/spells/incendiary-cloud"
                     },
                     {
                       "index": "power-word-stun",
+                      "level": 8,
                       "name": "Power Word Stun",
                       "url": "/api/spells/power-word-stun"
                     },
                     {
                       "index": "sunburst",
+                      "level": 8,
                       "name": "Sunburst",
                       "url": "/api/spells/sunburst"
                     }
@@ -2495,6 +2502,7 @@
                       ],
                       "spell": {
                         "index": "burning-hands",
+                        "level" : 1,
                         "name": "Burning Hands",
                         "url": "/api/spells/burning-hands"
                       }
@@ -2510,6 +2518,7 @@
                       ],
                       "spell": {
                         "index": "command",
+                        "level": 1,
                         "name": "Command",
                         "url": "/api/spells/command"
                       }
@@ -2525,6 +2534,7 @@
                       ],
                       "spell": {
                         "index": "blindness-deafness",
+                        "level":2,
                         "name": "Blindness/Deafness",
                         "url": "/api/spells/blindness-deafness"
                       }
@@ -2540,6 +2550,7 @@
                       ],
                       "spell": {
                         "index": "scorching-ray",
+                        "level": 2,
                         "name": "Scorching Ray",
                         "url": "/api/spells/scorching-ray"
                       }
@@ -2555,6 +2566,7 @@
                       ],
                       "spell": {
                         "index": "fireball",
+                        "level": 3,
                         "name": "Fireball",
                         "url": "/api/spells/fireball"
                       }
@@ -2570,6 +2582,7 @@
                       ],
                       "spell": {
                         "index": "stinking-cloud",
+                        "level": 3,
                         "name": "Stinking Cloud",
                         "url": "/api/spells/stinking-cloud"
                       }
@@ -2585,6 +2598,7 @@
                       ],
                       "spell": {
                         "index": "fire-shield",
+                        "level": 4,
                         "name": "Fire Shield",
                         "url": "/api/spells/fire-shield"
                       }
@@ -2600,6 +2614,7 @@
                       ],
                       "spell": {
                         "index": "wall-of-fire",
+                        "level": 4,
                         "name": "Wall of Fire",
                         "url": "/api/spells/wall-of-fire"
                       }
@@ -2615,6 +2630,7 @@
                       ],
                       "spell": {
                         "index": "flame-strike",
+                        "level": 5,
                         "name": "Flame Strike",
                         "url": "/api/spells/flame-strike"
                       }
@@ -2630,6 +2646,7 @@
                       ],
                       "spell": {
                         "index": "hallow",
+                        "level": 5,
                         "name": "Hallow",
                         "url": "/api/spells/hallow"
                       }
@@ -3598,6 +3615,10 @@
           "index": {
             "description": "Resource index for shorthand searching.",
             "type": "string"
+          },
+          "level": {
+            "description": "Level of the referenced resource.",
+            "type": "integer"
           },
           "name": {
             "description": "Name of the referenced resource.",
