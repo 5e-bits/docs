@@ -35,7 +35,7 @@ Yes, you can. The API itself is under the [MIT license](https://opensource.org/l
 
 Yes. Currently there is a limiter in place for 10k requests per second per IP. This is subject to change if something more practical needs to be enforced.
 
-### Am I allowed to/Is it legal to put more than just SRD content in my own version of this API? Is it legal for me to do __?
+### Am I allowed to/Is it legal to put more than just SRD content in my own version of this API? Is it legal for me to do `<insert questionable idea>`?
 
 ¯\\\_(ツ)\_/¯ I am not a lawyer, so do this at your own risk. However, one of our users made a wonderful flow chart that can help point you in the right direction. I must stress the point that this is not legal advice though.
 
