@@ -1,11 +1,20 @@
-import React from "react";
 import clsx from "clsx";
-import styles from "./HomepageFeatures.module.css";
+import Heading from "@theme/Heading";
+import styles from "./styles.module.css";
+import teacher from "@site/static/img/teacher.svg";
+import reference from "@site/static/img/reference.svg";
+import faq from "@site/static/img/faq.svg";
 
-const FeatureList = [
+type FeatureItem = {
+  title: string;
+  Svg: React.ComponentType<React.ComponentProps<"svg">>;
+  description: JSX.Element;
+};
+
+const FeatureList: FeatureItem[] = [
   {
     title: "Tutorials",
-    Svg: require("../../static/img/teacher.svg").default,
+    Svg: teacher,
     description: (
       <>
         If you're a professional developer or a beginner just starting your
@@ -16,7 +25,7 @@ const FeatureList = [
   },
   {
     title: "API Reference",
-    Svg: require("../../static/img/reference.svg").default,
+    Svg: reference,
     description: (
       <>
         Jump straight into the API documentation. If you want to see what data
@@ -27,7 +36,7 @@ const FeatureList = [
   },
   {
     title: "FAQ",
-    Svg: require("../../static/img/faq.svg").default,
+    Svg: faq,
     description: (
       <>
         Got questions about the the API? Check out our FAQ and see if we've
@@ -37,21 +46,21 @@ const FeatureList = [
   },
 ];
 
-function Feature({ Svg, title, description }) {
+function Feature({ title, Svg, description }: FeatureItem) {
   return (
     <div className={clsx("col col--4")}>
       <div className="text--center">
-        <Svg className={styles.featureSvg} alt={title} />
+        <Svg className={styles.featureSvg} role="img" />
       </div>
       <div className="text--center padding-horiz--md">
-        <h3>{title}</h3>
+        <Heading as="h3">{title}</Heading>
         <p>{description}</p>
       </div>
     </div>
   );
 }
 
-export default function HomepageFeatures() {
+export default function HomepageFeatures(): JSX.Element {
   return (
     <section className={styles.features}>
       <div className="container">
