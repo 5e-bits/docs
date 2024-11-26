@@ -1619,10 +1619,10 @@
     fs-extra "^11.1.1"
     tslib "^2.6.0"
 
-"@docusaurus/tsconfig@3.6.1":
-  version "3.6.1"
-  resolved "https://registry.yarnpkg.com/@docusaurus/tsconfig/-/tsconfig-3.6.1.tgz#cd50e639e965734a899520539f7d1c7dbd3cfb19"
-  integrity sha512-RvjMG9M9YK8N/I5oudqJed8jjfWGI7csr4XCkGXBToNkkoi2QgkTz2DxH+obKdfLejQaASdIMynYaE5Lv7Qw9Q==
+"@docusaurus/tsconfig@3.6.3":
+  version "3.6.3"
+  resolved "https://registry.yarnpkg.com/@docusaurus/tsconfig/-/tsconfig-3.6.3.tgz#8af20c45f0a67e193debedcb341c0a1e78b1dd63"
+  integrity sha512-1pT/rTrRpMV15E4tJH95W5PrjboMn5JkKF+Ys8cTjMegetiXjs0gPFOSDA5hdTlberKQLDO50xPjMJHondLuzA==
 
 "@docusaurus/types@3.5.2":
   version "3.5.2"
