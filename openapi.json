@@ -872,22 +872,22 @@
             "content": {
               "application/json": {
                 "schema": {
-                  "$ref": "#/components/schemas/APIReferenceList"
+                  "$ref": "#/components/schemas/ClassSpellList"
                 },
                 "example": {
                   "count": 2,
                   "results": [
                     {
                       "index": "power-word-kill",
-                      "level": 9,
                       "name": "Power Word Kill",
-                      "url": "/api/spells/power-word-kill"
+                      "url": "/api/spells/power-word-kill",
+                      "level": 9
                     },
                     {
                       "index": "true-polymorph",
-                      "level": 9,
                       "name": "True Polymorph",
-                      "url": "/api/spells/true-polymorph"
+                      "url": "/api/spells/true-polymorph",
+                      "level": 9
                     }
                   ]
                 }
@@ -1250,31 +1250,26 @@
                   "results": [
                     {
                       "index": "dominate-monster",
-                      "level": 8,
                       "name": "Dominate Monster",
                       "url": "/api/spells/dominate-monster"
                     },
                     {
                       "index": "earthquake",
-                      "level": 8,
                       "name": "Earthquake",
                       "url": "/api/spells/earthquake"
                     },
                     {
                       "index": "incendiary-cloud",
-                      "level": 8,
                       "name": "Incendiary Cloud",
                       "url": "/api/spells/incendiary-cloud"
                     },
                     {
                       "index": "power-word-stun",
-                      "level": 8,
                       "name": "Power Word Stun",
                       "url": "/api/spells/power-word-stun"
                     },
                     {
                       "index": "sunburst",
-                      "level": 8,
                       "name": "Sunburst",
                       "url": "/api/spells/sunburst"
                     }
@@ -1854,6 +1849,7 @@
                     }
                   ],
                   "challenge_rating": 10,
+                  "proficiency_bonus": 4,
                   "charisma": 18,
                   "condition_immunities": [],
                   "constitution": 15,
@@ -2502,7 +2498,6 @@
                       ],
                       "spell": {
                         "index": "burning-hands",
-                        "level" : 1,
                         "name": "Burning Hands",
                         "url": "/api/spells/burning-hands"
                       }
@@ -2518,7 +2513,6 @@
                       ],
                       "spell": {
                         "index": "command",
-                        "level": 1,
                         "name": "Command",
                         "url": "/api/spells/command"
                       }
@@ -2534,7 +2528,6 @@
                       ],
                       "spell": {
                         "index": "blindness-deafness",
-                        "level":2,
                         "name": "Blindness/Deafness",
                         "url": "/api/spells/blindness-deafness"
                       }
@@ -2550,7 +2543,6 @@
                       ],
                       "spell": {
                         "index": "scorching-ray",
-                        "level": 2,
                         "name": "Scorching Ray",
                         "url": "/api/spells/scorching-ray"
                       }
@@ -2566,7 +2558,6 @@
                       ],
                       "spell": {
                         "index": "fireball",
-                        "level": 3,
                         "name": "Fireball",
                         "url": "/api/spells/fireball"
                       }
@@ -2582,7 +2573,6 @@
                       ],
                       "spell": {
                         "index": "stinking-cloud",
-                        "level": 3,
                         "name": "Stinking Cloud",
                         "url": "/api/spells/stinking-cloud"
                       }
@@ -2598,7 +2588,6 @@
                       ],
                       "spell": {
                         "index": "fire-shield",
-                        "level": 4,
                         "name": "Fire Shield",
                         "url": "/api/spells/fire-shield"
                       }
@@ -2614,7 +2603,6 @@
                       ],
                       "spell": {
                         "index": "wall-of-fire",
-                        "level": 4,
                         "name": "Wall of Fire",
                         "url": "/api/spells/wall-of-fire"
                       }
@@ -2630,7 +2618,6 @@
                       ],
                       "spell": {
                         "index": "flame-strike",
-                        "level": 5,
                         "name": "Flame Strike",
                         "url": "/api/spells/flame-strike"
                       }
@@ -2646,7 +2633,6 @@
                       ],
                       "spell": {
                         "index": "hallow",
-                        "level": 5,
                         "name": "Hallow",
                         "url": "/api/spells/hallow"
                       }
@@ -3616,10 +3602,6 @@
             "description": "Resource index for shorthand searching.",
             "type": "string"
           },
-          "level": {
-            "description": "Level of the referenced resource.",
-            "type": "integer"
-          },
           "name": {
             "description": "Name of the referenced resource.",
             "type": "string"
@@ -4160,6 +4142,10 @@
           {
             "type": "object",
             "properties": {
+              "image": {
+                "description": "The image url of the magic item.",
+                "type": "string"
+              },
               "equipment_category": {
                 "$ref": "#/components/schemas/APIReference"
               },
@@ -5392,22 +5378,9 @@
                 "description": "The sub-category of a monster used for classification of monsters.\"",
                 "type": "string"
               },
-              "alignments": {
+              "alignment": {
                 "description": "A creature's general moral and personal attitudes.",
-                "type": "string",
-                "enum": [
-                  "chaotic neutral",
-                  "chaotic evil",
-                  "chaotic good",
-                  "lawful neutral",
-                  "lawful evil",
-                  "lawful good",
-                  "neutral",
-                  "neutral evil",
-                  "neutral good",
-                  "any alignment",
-                  "unaligned"
-                ]
+                "type": "string"
               },
               "armor_class": {
                 "description": "The difficulty for a player to successfully deal damage to a monster.",
@@ -5447,6 +5420,12 @@
                 "type": "number",
                 "minimum": 0,
                 "maximum": 21
+              },
+              "proficiency_bonus": {
+                "description": "A monster's proficiency bonus is the number added to ability checks, saving throws and attack rolls in which the monster is proficient, and is linked to the monster's challenge rating. This bonus has already been included in the monster's stats where applicable.",
+                "type": "number",
+                "minimum": 2,
+                "maximum": 9
               },
               "condition_immunities": {
                 "description": "A list of conditions that a monster is immune to.",
@@ -6184,6 +6163,39 @@
             }
           }
         ]
+      },
+      "ClassLevelSpell": {
+        "description": "`ClassLevelSpell`\n",
+        "allOf": [
+          {
+            "$ref": "#/components/schemas/APIReference"
+          },
+          {
+            "type": "object",
+            "properties": {
+              "level": {
+                "type": "number",
+                "description": "The level of the spell slot used to cast the spell."
+              }
+            }
+          }
+        ]
+      },
+      "ClassSpellList": {
+        "description": "`ClassSpellList`\n",
+        "type": "object",
+        "properties": {
+          "count": {
+            "description": "Total number of resources available.",
+            "type": "number"
+          },
+          "results": {
+            "type": "array",
+            "items": {
+              "$ref": "#/components/schemas/ClassLevelSpell"
+            }
+          }
+        }
       }
     }
   }
