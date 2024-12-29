@@ -27,7 +27,7 @@ Additionally, there is a separate Docker image for each repo so you only have to
 
 Yes it can! You can also host the data yourself if you don't want to use the API at all. You can also make changes and add extra data if you like. However, it is up to you to merge in new changes to the data and API.
 
-### Can I publish is on `<insert platform>`? Is this free use?
+### Can I publish is on `insert platform`? Is this free use?
 
 Yes, you can. The API itself is under the [MIT license](https://opensource.org/licenses/MIT), and the underlying data accessible via the API is supported under the SRD and OGL.
 
@@ -35,7 +35,7 @@ Yes, you can. The API itself is under the [MIT license](https://opensource.org/l
 
 Yes. Currently there is a limiter in place for 10k requests per second per IP. This is subject to change if something more practical needs to be enforced.
 
-### Am I allowed to/Is it legal to put more than just SRD content in my own version of this API? Is it legal for me to do `<insert questionable idea>`?
+### Am I allowed to/Is it legal to put more than just SRD content in my own version of this API? Is it legal for me to do `insert questionable idea`?
 
 ¯\\\_(ツ)\_/¯ I am not a lawyer, so do this at your own risk. However, one of our users made a wonderful flow chart that can help point you in the right direction. I must stress the point that this is not legal advice though.
 
