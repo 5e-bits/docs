@@ -175,6 +175,11 @@ const config: Config = {
           label: "FAQ",
         },
         {
+          type: "docsVersionDropdown",
+          position: "left",
+          dropdownActiveClassDisabled: true,
+        },
+        {
           to: "https://5e-bits.github.io/dnd-uptime",
           label: "Status",
           position: "right",
