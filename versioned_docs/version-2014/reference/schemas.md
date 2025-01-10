@@ -8,9 +8,10 @@ Represents a minimal representation of a resource. The detailed representation o
 
 ```
 APIReference {
-    index     string
-    name      string
-    url       string
+    index       string
+    name        string
+    url         string
+    updated_at  string
 }
 ```
 
