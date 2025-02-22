@@ -133,7 +133,7 @@ function searchMonster(monsterName) {
   monsterResult.innerHTML = "Searching...";
 
   axios
-    .get(`https://www.dnd5eapi.co/api/monsters`)
+    .get(`https://www.dnd5eapi.co/api/2014/monsters`)
     .then((response) => {
       const monsters = response.data.results;
       const matchedMonster = monsters.find(

@@ -20,17 +20,17 @@ For example, if you paste and run this terminal command:
 <TabItem value="unix" label="cURL">
 
 ```bash
-curl -X GET "https://www.dnd5eapi.co/api/ability-scores/cha" -H "Accept: application/json"
+curl -X GET "https://www.dnd5eapi.co/api/2014/ability-scores/cha" -H "Accept: application/json"
 
 # or with httpie
-http dnd5eapi.co/api/ability-scores/cha
+http dnd5eapi.co/api/2014/ability-scores/cha
 ```
 
 </TabItem>
 <TabItem value="win" label="PowerShell">
 
 ```powershell
-Invoke-RestMethod -Uri https://www.dnd5eapi.co/api/ability-scores/cha
+Invoke-RestMethod -Uri https://www.dnd5eapi.co/api/2014/ability-scores/cha
 ```
 
 </TabItem>
@@ -53,24 +53,24 @@ We should see a result containing details about the Charisma ability score:
     {
       "name": "Deception",
       "index": "deception",
-      "url": "/api/skills/deception"
+      "url": "/api/2014/skills/deception"
     },
     {
       "name": "Intimidation",
       "index": "intimidation",
-      "url": "/api/skills/intimidation"
+      "url": "/api/2014/skills/intimidation"
     },
     {
       "name": "Performance",
       "index": "performance",
-      "url": "/api/skills/performance"
+      "url": "/api/2014/skills/performance"
     },
     {
       "name": "Persuasion",
       "index": "persuasion",
-      "url": "/api/skills/persuasion"
+      "url": "/api/2014/skills/persuasion"
     }
   ],
-  "url": "/api/ability-scores/cha"
+  "url": "/api/2014/ability-scores/cha"
 }
 ```

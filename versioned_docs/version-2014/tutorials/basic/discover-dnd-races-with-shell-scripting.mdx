@@ -24,7 +24,7 @@ Before we set off on our coding journey, make sure you have these:
     Open your command-line terminal and let's cast our first spell to fetch D&D race information using the mighty `curl` command. Type or copy-paste the following:
 
     ```bash
-    curl -L 'https://www.dnd5eapi.co/api/races/dwarf' -H 'Accept: application/json'
+    curl -L 'https://www.dnd5eapi.co/api/2014/races/dwarf' -H 'Accept: application/json'
     ```
 
     When you hit Enter, you'll unveil the details of the D&D Dwarf race!
@@ -42,7 +42,7 @@ Before we set off on our coding journey, make sure you have these:
 
     read -p "Enter the name of a D&D race: " race_name
 
-    curl -L "https://www.dnd5eapi.co/api/races/$race_name" -H 'Accept: application/json'
+    curl -L "https://www.dnd5eapi.co/api/2014/races/$race_name" -H 'Accept: application/json'
     ```
 
 3. **Enchant Your Script:**
@@ -82,7 +82,7 @@ Enter the name of a D&D race: dwarf
       "ability_score": {
         "index": "con",
         "name": "CON",
-        "url": "/api/ability-scores/con"
+        "url": "/api/2014/ability-scores/con"
       },
       "bonus": 2
     }
