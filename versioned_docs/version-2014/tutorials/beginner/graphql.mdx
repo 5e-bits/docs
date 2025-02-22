@@ -12,13 +12,13 @@ GraphQL is a powerful and flexible way to fetch data from the D&D 5e SRD API. In
 />
 
 ## From REST to GraphQL
-In the [Getting Started](./getting-started.mdx) tutorial, we used `curl` to make an HTTP `GET` request to a specific URL that returned the data we wanted. Using that approach, the URL we made a request to corresponded directly to the resource we wanted to fetch; `/api/ability-scores/cha` refers to the resource within the `ability-scores` collection which has the index `cha`.
+In the [Getting Started](./getting-started.mdx) tutorial, we used `curl` to make an HTTP `GET` request to a specific URL that returned the data we wanted. Using that approach, the URL we made a request to corresponded directly to the resource we wanted to fetch; `/api/2014/ability-scores/cha` refers to the resource within the `ability-scores` collection which has the index `cha`.
 
 This is one of the defining features of a RESTful API: a URL corresponds to a resource. The RESTful endpoints of the D&D 5e SRD API follow this uniform interface to make it easy for us to fetch the resources we need, but they don't allow us much control over what data is returned by the API.
 
-For example, if we make a `GET` request to `https://www.dnd5eapi.co/api/monsters`, we will receive only the `index`, `name` and `url` of all the monsters in the SRD database. This is a sensible default, as it gives us the information we need to discover all the monsters, while keeping the response relatively lightweight by excluding unnecessary details. But what if I want to know more about a specific monster?
+For example, if we make a `GET` request to `https://www.dnd5eapi.co/api/2014/monsters`, we will receive only the `index`, `name` and `url` of all the monsters in the SRD database. This is a sensible default, as it gives us the information we need to discover all the monsters, while keeping the response relatively lightweight by excluding unnecessary details. But what if I want to know more about a specific monster?
 
-Making a request to one of the `url`s provided, such as `/api/monsters/aboleth`, we will receive *all* of the data about the Aboleth, including its stats, actions, proficiencies, etc. But what if we just wanted to know the Aboleth's armor class? We've just wasted time and bandwidth transporting all that extra information.
+Making a request to one of the `url`s provided, such as `/api/2014/monsters/aboleth`, we will receive *all* of the data about the Aboleth, including its stats, actions, proficiencies, etc. But what if we just wanted to know the Aboleth's armor class? We've just wasted time and bandwidth transporting all that extra information.
 
 And what if we want to fetch the armor classes of *all* of the monsters? Using the REST API, we would have to make a separate request for every single monster in the API - that's 334 HTTP requests! Not only would this be slow, it would be a pain to implement.
 
