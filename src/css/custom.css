@@ -145,6 +145,7 @@ h6 {
   color: var(--ifm-color-primary-darkest);
   font-family: "Young Serif", serif;
   letter-spacing: -0.02em;
+  transform: translateZ(0);
 }
 
 [data-theme="dark"] .hero__title {

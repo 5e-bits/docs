@@ -49,7 +49,7 @@ function HomepageHeader() {
 export default function Home(): JSX.Element {
   const { siteConfig } = useDocusaurusContext();
   return (
-    <Layout title={siteConfig.title} description={siteConfig.tagline}>
+    <Layout title={"Home"} description={siteConfig.tagline}>
       <HomepageHeader />
       <main className={styles.gradientBackdrop}>
         <div className={styles.noise} />
