@@ -148,10 +148,9 @@ h6 {
 }
 
 [data-theme="dark"] .hero__title {
-  text-shadow: 0 0 12px var(--ifm-color-primary-darkest),
-    0 0 80px var(--ifm-color-primary-dark),
-    0 0 90px var(--ifm-color-primary-lightest),
-    0 0 155px var(--ifm-color-primary-darkest);
+  filter: drop-shadow(0 0 7px var(--ifm-color-primary-darkest))
+    drop-shadow(0 0 20px var(--dnd-bg))
+    drop-shadow(0 0 30px var(--ifm-color-primary-darker));
 }
 
 .hero__subtitle {
