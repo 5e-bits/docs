@@ -17,9 +17,9 @@ const FeatureList: FeatureItem[] = [
     Icon: BookOpen,
     description: (
       <>
-        Jump straight into the API documentation. If you want to see what data
-        the API has to offer along with some code examples in popular languages,
-        this is the place for you.
+        If you're a professional developer or a beginner just starting your
+        journey, we've got a curated selection of tutorials and example projects
+        to get you building with the API..
       </>
     ),
     link: "/docs/tutorials/beginner/getting-started",
@@ -29,9 +29,9 @@ const FeatureList: FeatureItem[] = [
     Icon: Book,
     description: (
       <>
-        If you're a professional developer or a beginner just starting your
-        journey, we've got a curated selection of tutorials and example projects
-        to get you building with the API.
+        Jump straight into the API documentation. If you want to see what data
+        the API has to offer along with some code examples in popular languages,
+        this is the place for you.
       </>
     ),
     link: "/docs/api",
@@ -42,8 +42,8 @@ const FeatureList: FeatureItem[] = [
     Icon: HelpCircle,
     description: (
       <>
-        Have questions about the API? Check our FAQ for answers about rate
-        limits, usage, contributing, and more.
+        Got questions about the the API? Check out our FAQ and see if we've
+        already got an answer for ya.
       </>
     ),
     link: "/docs/faq",
