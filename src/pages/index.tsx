@@ -1,16 +1,18 @@
 import clsx from "clsx";
+import { JSX, useState } from "react";
 import Link from "@docusaurus/Link";
 import useDocusaurusContext from "@docusaurus/useDocusaurusContext";
 import Layout from "@theme/Layout";
-import HomepageFeatures from "@site/src/components/HomepageFeatures";
 import Heading from "@theme/Heading";
-
+import ApiExample from "@site/src/components/ApiExample";
 import styles from "./index.module.css";
 
 function HomepageHeader() {
   const { siteConfig } = useDocusaurusContext();
+  const [isApiVisible, setIsApiVisible] = useState(false);
+
   return (
-    <header className={clsx("hero hero--primary", styles.heroBanner)}>
+    <header className={clsx("hero", styles.heroBanner)}>
       <div className="container">
         <Heading as="h1" className="hero__title">
           {siteConfig.title}
@@ -18,11 +20,26 @@ function HomepageHeader() {
         <p className="hero__subtitle">{siteConfig.tagline}</p>
         <div className={styles.buttons}>
           <Link
-            className="button button--secondary button--lg"
-            to="/docs/tutorials/beginner/getting-started"
+            className={clsx(styles.button, "button")}
+            to="/docs/introduction"
           >
-            Get Started - 1min ⏱️
+            Get Started
           </Link>
+          <button
+            className={clsx(styles.button, "button", "button--secondary")}
+            onClick={() => setIsApiVisible(!isApiVisible)}
+            aria-label={isApiVisible ? "Close API example" : "Try the API"}
+          >
+            {isApiVisible ? "Close" : "Try the API"}
+          </button>
+        </div>
+        <div
+          className={clsx(
+            styles.apiExampleWrapper,
+            isApiVisible && styles.visible
+          )}
+        >
+          {isApiVisible && <ApiExample />}
         </div>
       </div>
     </header>
@@ -32,10 +49,10 @@ function HomepageHeader() {
 export default function Home(): JSX.Element {
   const { siteConfig } = useDocusaurusContext();
   return (
-    <Layout title={`${siteConfig.title}`} description={`${siteConfig.tagline}`}>
+    <Layout title={siteConfig.title} description={siteConfig.tagline}>
       <HomepageHeader />
-      <main>
-        <HomepageFeatures />
+      <main className={styles.gradientBackdrop}>
+        <div className={styles.noise} />
       </main>
     </Layout>
   );
