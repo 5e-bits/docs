@@ -85,67 +85,10 @@
   align-items: center;
 }
 
-.statsRow {
-  display: flex;
-  justify-content: center;
-  align-items: center;
-  margin: 2rem auto;
-  max-width: 700px;
-  background-color: var(--dnd-surface);
-  border-radius: 12px;
-  padding: 1.5rem;
-  border: 1px solid var(--dnd-border);
-}
-
-.statItem {
-  display: flex;
-  flex-direction: column;
-  align-items: center;
-  flex: 1;
-}
-
-.divider {
-  width: 1px;
-  height: 40px;
-  background-color: var(--dnd-border);
-  margin: 0 1rem;
-}
-
-.statNumber {
-  font-size: 2.2rem;
-  font-weight: 700;
-  line-height: 1;
-  margin-bottom: 0.25rem;
-  background: linear-gradient(120deg, var(--dnd-text), var(--dnd-accent));
-  -webkit-background-clip: text;
-  -webkit-text-fill-color: transparent;
-  background-clip: text;
-}
-
-.statLabel {
-  font-size: 0.9rem;
-  color: var(--dnd-text-secondary);
-}
-
-@keyframes animateGlow {
-  0% {
-    background-position: 0% 50%;
-  }
-  100% {
-    background-position: 200% 50%;
-  }
-}
-
 /* Responsive adjustments */
 @media screen and (max-width: 768px) {
   .heroBanner {
     padding: 3rem 1rem;
     min-height: 80vh;
-  }
-
-  .statsRow {
-    flex-direction: column;
-    gap: 1.5rem;
-    padding: 1rem;
   }
 }

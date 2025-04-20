@@ -19,6 +19,8 @@
   --ifm-color-primary-lightest: #ef9a9a !important;
   --ifm-pre-background: var(--dnd-surface-2) !important;
 
+  --ifm-toc-border-color: var(--dnd-bg) !important;
+
   --ifm-table-border-color: var(--dnd-border) !important;
 
   --doc-sidebar-width: 250px !important;
