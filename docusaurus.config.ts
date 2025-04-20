@@ -17,7 +17,13 @@ const config: Config = {
     mermaid: true,
   },
   themes: [
-    require.resolve("@easyops-cn/docusaurus-search-local"),
+    [
+      require.resolve("@easyops-cn/docusaurus-search-local"),
+      /** @type {import("@easyops-cn/docusaurus-search-local").PluginOptions} */
+      {
+        searchBarShortcutHint: false,
+      },
+    ],
     "@docusaurus/theme-mermaid",
   ],
 
@@ -169,25 +175,20 @@ const config: Config = {
           label: "API",
         },
         {
+          type: "docsVersionDropdown",
+          position: "left",
+          dropdownActiveClassDisabled: true,
+        },
+        {
           type: "doc",
           docId: "faq",
           position: "left",
           label: "FAQ",
         },
         {
-          type: "docsVersionDropdown",
-          position: "left",
-          dropdownActiveClassDisabled: true,
-        },
-        {
           to: "https://5e-bits.github.io/dnd-uptime",
           label: "Status",
-          position: "right",
-        },
-        {
-          href: "https://github.com/5e-bits",
-          label: "GitHub",
-          position: "right",
+          position: "left",
         },
       ],
     },
@@ -204,11 +205,19 @@ const config: Config = {
           ],
         },
         {
-          title: "More",
+          title: "Contribute",
           items: [
             {
-              label: "GitHub",
-              href: "https://github.com/5e-bits",
+              label: "API Source",
+              href: "https://github.com/5e-bits/5e-srd-api",
+            },
+            {
+              label: "Docs Source",
+              href: "https://github.com/5e-bits/docs",
+            },
+            {
+              label: "Database Source",
+              href: "https://github.com/5e-bits/5e-database",
             },
           ],
         },
@@ -217,7 +226,7 @@ const config: Config = {
     },
     prism: {
       theme: prismThemes.github,
-      darkTheme: prismThemes.dracula,
+      darkTheme: prismThemes.vsDark,
       additionalLanguages: [
         "powershell",
         "csharp",

@@ -4,27 +4,196 @@
  * work well for content-centric websites.
  */
 
+/* Import fonts */
+@import url("https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&family=Young+Serif&display=swap");
+
 /* You can override the default Infima variables here. */
 :root {
-  --ifm-color-primary: #ca3149;
-  --ifm-color-primary-dark: #b62c42;
-  --ifm-color-primary-darker: #ac2a3e;
-  --ifm-color-primary-darkest: #8d2233;
-  --ifm-color-primary-light: #d14359;
-  --ifm-color-primary-lighter: #d44d62;
-  --ifm-color-primary-lightest: #db6b7d;
+  /* Modern theme colors */
+  --ifm-color-primary: #e53935 !important;
+  --ifm-color-primary-dark: #d32f2f !important;
+  --ifm-color-primary-darker: #c62828 !important;
+  --ifm-color-primary-darkest: #b71c1c !important;
+  --ifm-color-primary-light: #ef5350 !important;
+  --ifm-color-primary-lighter: #ef5350 !important;
+  --ifm-color-primary-lightest: #ef9a9a !important;
+  --ifm-pre-background: var(--dnd-surface-2) !important;
+
+  --ifm-table-border-color: var(--dnd-border) !important;
+
+  --doc-sidebar-width: 250px !important;
+
+  --ifm-transition-fast: 0ms !important;
+
+  --ifm-global-radius: 0.25rem !important;
+
+  --ifm-button-background-color: var(--dnd-text) !important;
+  --ifm-button-color: var(--dnd-bg) !important;
+  --ifm-button-border-color: var(--dnd-text) !important;
+  --ifm-button-padding-vertical: 0.25rem !important;
+  --ifm-button-padding-horizontal: 0.75rem !important;
+
+  --ifm-breadcrumb-item-background-active: var(--dnd-bg) !important;
+  --ifm-breadcrumb-padding-vertical: 0.12rem !important;
+  --ifm-breadcrumb-padding-horizontal: 0.25rem !important;
+
+  --ifm-menu-color-background-active: none !important;
+
+  /* Custom theme colors - Light mode */
+  --dnd-accent: #e53935;
+  --dnd-bg: #ffffff;
+  --dnd-surface: #f8f9fa;
+  --dnd-surface-2: #f1f3f5;
+  --dnd-border: #e9ecef;
+  --dnd-text: #212529;
+  --dnd-text-secondary: #495057;
+  --dnd-text-tertiary: #868e96;
+
+  /* Typography */
+  --ifm-font-family-base: "Inter", system-ui, -apple-system, sans-serif !important;
+  --ifm-heading-font-family: "Inter", system-ui, -apple-system, sans-serif !important;
+
+  /* Background */
+  --ifm-background-color: var(--dnd-bg) !important;
+  --ifm-background-surface-color: var(--dnd-surface) !important;
+
+  /* Navbar */
+  --ifm-navbar-background-color: var(--dnd-bg) !important;
+  --ifm-navbar-shadow: none !important;
+  --ifm-navbar-search-input-background-color: var(--dnd-bg) !important;
+
+  /* Footer */
+  --ifm-footer-background-color: var(--dnd-bg) !important;
+  --ifm-footer-border-color: var(--dnd-border) !important;
+
+  /* Content */
+  --ifm-color-content: var(--dnd-text) !important;
+  --ifm-link-color: var(--ifm-color-primary) !important;
+  --ifm-menu-color: var(--dnd-text) !important;
+
+  /* Code blocks */
+  --ifm-code-background: var(--dnd-surface-2) !important;
+  --docusaurus-highlighted-code-line-bg: rgba(0, 0, 0, 0.1) !important;
+
+  /* Font Sizing */
+  --ifm-font-size-base: 14px !important;
 }
 
+/* Dark mode overrides */
 [data-theme="dark"] {
-  --ifm-color-primary: #fb4747;
-  --ifm-color-primary-dark: #fa2727;
-  --ifm-color-primary-darker: #fa1818;
-  --ifm-color-primary-darkest: #dd0505;
-  --ifm-color-primary-light: #fc6767;
-  --ifm-color-primary-lighter: #fc7676;
-  --ifm-color-primary-lightest: #fda6a6;
+  /* Custom theme colors - Dark mode */
+  --dnd-accent: #ef5350;
+  --dnd-bg: #101010;
+  --dnd-surface: #141414;
+  --dnd-surface-2: #1a1a1a;
+  --dnd-border: #262626;
+  --dnd-text: #ffffff;
+  --dnd-text-secondary: rgba(255, 255, 255, 0.7);
+  --dnd-text-tertiary: rgba(255, 255, 255, 0.5);
+
+  /* Background */
+  --ifm-background-color: var(--dnd-bg) !important;
+  --ifm-background-surface-color: var(--dnd-surface) !important;
+
+  /* Navbar */
+  --ifm-navbar-background-color: var(--dnd-bg) !important;
+  --ifm-navbar-shadow: none !important;
+  --ifm-navbar-search-input-background-color: var(--dnd-bg) !important;
+
+  --ifm-breadcrumb-item-background-active: var(--dnd-bg) !important;
+
+  /* Code blocks */
+  --docusaurus-highlighted-code-line-bg: rgba(255, 255, 255, 0.1);
+
+  --ifm-button-background-color: var(--dnd-text) !important;
+  --ifm-button-color: var(--dnd-bg) !important;
+  --ifm-button-border-color: var(--dnd-text) !important;
 }
 
+/* Global styles */
+h1,
+h2,
+h3,
+h4,
+h5,
+h6 {
+  font-weight: 600;
+}
+
+/* Hero section */
+.hero {
+  background: var(--dnd-bg);
+  color: var(--dnd-text);
+}
+
+::-moz-selection {
+  /* Code for Firefox */
+  color: var(--dnd-text);
+  background: var(--ifm-color-primary-darkest);
+}
+
+::selection {
+  color: var(--dnd-text);
+  background: var(--ifm-color-primary-darkest);
+}
+
+.hero__title {
+  font-size: 3.5rem;
+  margin-bottom: 0.5rem;
+  color: var(--ifm-color-primary-darkest);
+  font-family: "Young Serif", serif;
+  letter-spacing: -0.02em;
+}
+
+[data-theme="dark"] .hero__title {
+  text-shadow: 0 0 12px var(--ifm-color-primary-darkest),
+    0 0 80px var(--ifm-color-primary-dark),
+    0 0 90px var(--ifm-color-primary-lightest),
+    0 0 155px var(--ifm-color-primary-darkest);
+}
+
+.hero__subtitle {
+  font-size: 1.25rem;
+  margin-bottom: 1.5rem;
+  color: var(--dnd-text);
+}
+
+/* Footer customization */
+.footer {
+  background-color: var(--dnd-bg);
+  border-top: 1px solid var(--dnd-border);
+  padding: 3rem 0;
+}
+
+.footer__title {
+  color: var(--dnd-text);
+  font-weight: 600;
+  font-size: 1rem;
+  margin-bottom: 1rem;
+}
+
+.footer__item {
+  color: var(--dnd-text-secondary);
+  font-size: 0.9rem;
+}
+
+.footer__link-item {
+  color: var(--dnd-text-secondary);
+  transition: color 0.2s ease;
+}
+
+.footer__link-item:hover {
+  color: var(--dnd-accent);
+  text-decoration: none;
+}
+
+.footer__copyright {
+  color: var(--dnd-text-tertiary);
+  font-size: 0.85rem;
+  margin-top: 2rem;
+}
+
+/* Code blocks and tabs */
 .api-code-tab-group {
   display: flex;
   flex-wrap: wrap;
@@ -34,19 +203,8 @@
   flex: 1 !important;
 }
 
-@media only screen and (max-width: 768px){
+@media only screen and (max-width: 996px) {
   .api-code-tab-group {
     display: block !important;
   }
-}
-
-.docusaurus-highlight-code-line {
-  background-color: rgba(0, 0, 0, 0.1);
-  display: block;
-  margin: 0 calc(-1 * var(--ifm-pre-padding));
-  padding: 0 var(--ifm-pre-padding);
-}
-
-html[data-theme="dark"] .docusaurus-highlight-code-line {
-  background-color: rgba(0, 0, 0, 0.3);
 }

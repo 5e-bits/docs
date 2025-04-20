@@ -4,7 +4,7 @@ sidebar_position: 1
 
 # Introduction
 
-### :arrow_right: [Skip to the tutorials](/docs/tutorials/)
+### [Skip to the tutorials](/docs/tutorials/)
 
 *If you wanna skip right into the tutorial, go ahead. We don't mind!*
 

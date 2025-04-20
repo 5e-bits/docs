@@ -1,31 +1,20 @@
 import clsx from "clsx";
 import Heading from "@theme/Heading";
 import styles from "./styles.module.css";
-import teacher from "@site/static/img/teacher.svg";
-import reference from "@site/static/img/reference.svg";
-import faq from "@site/static/img/faq.svg";
+import Link from "@docusaurus/Link";
+import { Book, BookOpen, HelpCircle } from "react-feather";
 
 type FeatureItem = {
   title: string;
-  Svg: React.ComponentType<React.ComponentProps<"svg">>;
+  Icon: React.ComponentType<React.ComponentProps<"svg">>;
   description: JSX.Element;
+  link: string;
 };
 
 const FeatureList: FeatureItem[] = [
   {
     title: "Tutorials",
-    Svg: teacher,
-    description: (
-      <>
-        If you're a professional developer or a beginner just starting your
-        journey, we've got a curated selection of tutorials and example projects
-        to get you building with the API.
-      </>
-    ),
-  },
-  {
-    title: "API Reference",
-    Svg: reference,
+    Icon: BookOpen,
     description: (
       <>
         Jump straight into the API documentation. If you want to see what data
@@ -33,29 +22,44 @@ const FeatureList: FeatureItem[] = [
         this is the place for you.
       </>
     ),
+    link: "/docs/tutorials/beginner/getting-started",
   },
   {
-    title: "FAQ",
-    Svg: faq,
+    title: "API Reference",
+    Icon: Book,
     description: (
       <>
-        Got questions about the the API? Check out our FAQ and see if we've
-        already got an answer for ya.
+        If you're a professional developer or a beginner just starting your
+        journey, we've got a curated selection of tutorials and example projects
+        to get you building with the API.
       </>
     ),
+    link: "/docs/api",
+  },
+
+  {
+    title: "FAQ",
+    Icon: HelpCircle,
+    description: (
+      <>
+        Have questions about the API? Check our FAQ for answers about rate
+        limits, usage, contributing, and more.
+      </>
+    ),
+    link: "/docs/faq",
   },
 ];
 
-function Feature({ title, Svg, description }: FeatureItem) {
+function Feature({ title, Icon, description, link }: FeatureItem) {
   return (
     <div className={clsx("col col--4")}>
-      <div className="text--center">
-        <Svg className={styles.featureSvg} role="img" />
-      </div>
-      <div className="text--center padding-horiz--md">
-        <Heading as="h3">{title}</Heading>
-        <p>{description}</p>
-      </div>
+      <Link to={link} className={styles.featureLink}>
+        <div className={styles.featureCard}>
+          <Icon className={styles.featureIcon} />
+          <h3 className={styles.featureTitle}>{title}</h3>
+          <p className={styles.featureDescription}>{description}</p>
+        </div>
+      </Link>
     </div>
   );
 }
