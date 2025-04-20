@@ -32,7 +32,7 @@
 }
 
 .selectorButton {
-  padding: 0rem 0.7rem;
+  padding: 0rem 0.25rem;
   border: none;
   background: var(--ifm-button-background);
   color: var(--ifm-text);
@@ -117,7 +117,6 @@
   color: var(--ifm-color-white);
   font-weight: 600;
   padding: 0.35rem 0.8rem;
-  margin-left: 1rem;
   height: auto;
   opacity: 1;
   transition: all 0.2s ease;

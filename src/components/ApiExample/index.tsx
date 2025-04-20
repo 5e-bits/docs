@@ -62,13 +62,13 @@ export default function ApiExample() {
       <div className={styles.apiHeader}>
         <div className={styles.apiUrl}>
           <div className={styles.urlContainer}>
-            <code>https://www.dnd5eapi.co{currentExample.endpoint}</code>
+            <code>{currentExample.endpoint}</code>
             <button
               className={clsx(styles.selectorButton, styles.tryItButton)}
               onClick={fetchData}
               disabled={isLoading}
             >
-              {isLoading ? "Loading..." : "Try it"}
+              Try it
             </button>
           </div>
           <div

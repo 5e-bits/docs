@@ -89,6 +89,6 @@
 @media screen and (max-width: 768px) {
   .heroBanner {
     padding: 3rem 1rem;
-    min-height: 80vh;
+    min-height: 100vh;
   }
 }
