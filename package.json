@@ -24,7 +24,7 @@
     "docusaurus-preset-openapi": "^0.7.5",
     "prism-react-renderer": "^2.4.0",
     "react": "^18.0.0",
-    "react-dom": "^18.0.0",
+    "react-dom": "^19.1.1",
     "react-feather": "^2.0.10",
     "url": "^0.11.4"
   },
