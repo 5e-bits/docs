@@ -1,0 +1,18 @@
+# D&D 5e SRD API Documentation
+
+> REST + GraphQL API for the 5e SRD database. Includes guides, tutorials, API reference, and schema documentation.
+
+This file contains links to documentation sections following the llmstxt.org standard.
+
+## Table of Contents
+
+- [FAQ](https://5e-bits.github.io/docs/docs/faq.md): Please check if the data is within [the SRD.](https://media.wizards.com/2016/downloads/DND/SRD-OGL_V5.1.pdf) If it is, feel free to open an issue o...
+- [Introduction](https://5e-bits.github.io/docs/docs/introduction.md): Welcome to the D&D 5e SRD API, the Dungeons & Dragons 5th Edition API.
+- [Schemas](https://5e-bits.github.io/docs/docs/reference/schemas.md): Definitions of all schemas will be accessible in a future update. Two of the most common schemas are described here.
+- [Interactive Monster Search with JavaScript](https://5e-bits.github.io/docs/docs/tutorials/advanced/monster-search-with-javascript.md): import LearningObjectives from '@site/src/components/LearningObjectives';
+- [Creating a Spell Card Library with React](https://5e-bits.github.io/docs/docs/tutorials/advanced/react-spell-cards.md): import LearningObjectives from "@site/src/components/LearningObjectives";
+- [Command Line Spellbook with Python](https://5e-bits.github.io/docs/docs/tutorials/advanced/terminal-spellbook-with-python.md): import LearningObjectives from '@site/src/components/LearningObjectives';
+- [Discover D&D Races with Shell Scripting](https://5e-bits.github.io/docs/docs/tutorials/basic/discover-dnd-races-with-shell-scripting.md): import LearningObjectives from '@site/src/components/LearningObjectives';
+- [Getting Started](https://5e-bits.github.io/docs/docs/tutorials/beginner/getting-started.md): import Tabs from '@theme/Tabs';
+- [GraphQL Fundamentals](https://5e-bits.github.io/docs/docs/tutorials/beginner/graphql.md): import LearningObjectives from "@site/src/components/LearningObjectives";
+- [Tutorials](https://5e-bits.github.io/docs/docs/tutorials/index.md): import TutorialsList from "@site/src/components/TutorialsList"

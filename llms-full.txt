@@ -1,0 +1,1069 @@
+# D&D 5e SRD API Documentation
+
+> REST + GraphQL API for the 5e SRD database. Includes guides, tutorials, API reference, and schema documentation.
+
+This file contains all documentation content in a single document following the llmstxt.org standard.
+
+## FAQ
+
+
+### A monster, spell, subclass, etc. is missing from the API / Database. Can I add it?
+
+Please check if the data is within [the SRD.](https://media.wizards.com/2016/downloads/DND/SRD-OGL_V5.1.pdf) If it is, feel free to open an issue or PR to add it yourself. Otherwise, due to legal reasons, we cannot add it.
+
+[This reddit post is a good explanation of how this works.](https://www.reddit.com/r/DnD/comments/hqw3jx/til_that_the_spell_tashas_hideous_laughter_was/fy0q5ej/)
+
+### What is the SRD?
+
+The SRD, or Systems Reference Document, contains guidelines for publishing content under the OGL. This allows for some of the data for D&D 5e to be open source. The API only covers data that can be found in the SRD. [Here's a link to the full text of the SRD.](https://media.wizards.com/2016/downloads/DND/SRD-OGL_V5.1.pdf)
+
+### What is the OGL?
+
+The Open Game License (OGL) is a public copyright license by Wizards of the Coast that may be used by tabletop role-playing game developers to grant permission to modify, copy, and redistribute some of the content designed for their games, notably game mechanics. However, they must share-alike copies and derivative works. [More information about the OGL can be found here.](https://en.wikipedia.org/wiki/Open_Game_License)
+
+### Can this API be self hosted?
+
+Yes it can! You can also host the data yourself if you don't want to use the API at all. You can also make changes and add extra data if you like. However, it is up to you to merge in new changes to the data and API.
+
+### Can I publish is on `insert platform`? Is this free use?
+
+Yes, you can. The API itself is under the [MIT license](https://opensource.org/licenses/MIT), and the underlying data accessible via the API is supported under the SRD and OGL.
+
+### Is there a limit to the number of calls I can make at a time?
+
+Yes. Currently there is a limiter in place for 10k requests per second per IP. This is subject to change if something more practical needs to be enforced.
+
+### Am I allowed to/Is it legal to put more than just SRD content in my own version of this API? Is it legal for me to do `insert questionable idea`?
+
+¯\\\_(ツ)\_/¯ I am not a lawyer, so do this at your own risk. However, one of our users made a wonderful flow chart that can help point you in the right direction. I must stress the point that this is not legal advice though.
+
+![Copyrights Flowchart](/img/faq/copyrightsFlowchart.png)
+
+### How can I help fund this project?
+
+To be completely transparent, this project only costs me $7/mo to run. However, if you want to [help fund it anyways](https://ko-fi.com/bagelbits).
+
+You can also find links on both repos.
+
+---
+
+## Introduction
+
+
+Welcome to the D&D 5e SRD API, the Dungeons & Dragons 5th Edition API.
+
+This documentation will help you familiarize yourself with the resources available and how to consume them with HTTP requests. Read through the getting started [tutorial](/docs/tutorials/) before you dive in.
+
+## Base URL
+
+All API requests are made to the following base URL:
+
+```
+https://www.dnd5eapi.co/api
+```
+
+## Authentication
+
+This is a completely open API. **No authentication is required to query and get data.** This also means that we've limited what you can do to just `GET`-ing the data.
+
+## Rate Limits
+
+There is a limit of 10,000 requests per second per IP. This is subject to change if something more practical needs to be enforced.
+
+## GraphQL
+
+This API also supports [GraphQL](https://graphql.org/). The GraphQL endpoint is:
+
+```
+https://www.dnd5eapi.co/graphql
+```
+
+See the [GraphQL tutorial](/docs/tutorials/beginner/graphql) for examples and how to use the Apollo sandbox explorer.
+
+## Community
+
+Come hang out with us [on Discord](https://discord.gg/TQuYTv7). We're friendly and would love to hear what you make with the API.
+
+## Contributing
+
+This API is built from two repositories:
+
+- [5e-database](https://github.com/5e-bits/5e-database) — the data
+- [5e-srd-api](https://github.com/5e-bits/5e-srd-api) — the API implementation
+
+This is an evolving API and fresh ideas are always welcome. You can open an issue in either repo, open a PR for changes, or discuss with other users on Discord.
+
+If you find a mistake in the data, feel free to [let us know](https://discord.gg/TQuYTv7).
+
+---
+
+## Schemas
+
+
+Definitions of all schemas will be accessible in a future update. Two of the most common schemas are described here.
+
+## API Reference
+
+Represents a minimal representation of a resource. The detailed representation of the referenced resource can be retrieved by making a request to the referenced `URL`.
+
+```
+APIReference {
+    index       string
+    name        string
+    url         string
+    updated_at  string
+}
+```
+
+## Difficulty Check (DC)
+
+Represents a difficulty check.
+
+```
+DC {
+    dc_type       APIReference
+    dc_value      number
+    success_type  "none" | "half" | "other"
+}
+```
+
+## Damage
+
+Represents damage.
+
+```
+Damage {
+    damage_type     APIReference
+    damage_dice     string
+}
+```
+
+## Choice
+
+Represents a choice made by a player. Commonly seen related to decisions made during character creation or combat (e.g.: the description of the cleric class, under **Proficiencies**, states "Skills: Choose two from	History, Insight, Medicine, Persuasion, and	Religion" [[SRD p15]](https://media.wizards.com/2016/downloads/DND/SRD-OGL_V5.1.pdf#page=15))
+
+```
+Choice {
+    desc      string
+    choose    number
+    type      string
+    from      OptionSet
+}
+```
+
+## OptionSet
+
+The OptionSet structure provides the options to be chosen from, or sufficient data to fetch and interpret the options. All OptionSets have an `option_set_type` attribute that indicates the structure of the object that contains the options. The possible values are `options_array`, `equipment_category`, and `reference_list`. Other attributes on the OptionSet depend on the value of this attribute.
+
+- `options_array`
+    - `options` (array): An array of Option objects. Each item in the array represents an option that can be chosen.
+- `equipment_category`
+    - `equipment_category` (APIReference): A reference to an EquipmentCategory. Each item in the EquipmentCategory's `equipment` array represents one option that can be chosen.
+- `resource_list`
+    - `resource_list_url` (string): A reference (by URL) to a collection in the database. The URL may include query parameters. Each item in the resulting ResourceList's `results` array represents one option that can be chosen.
+
+## Option
+
+When the options are given in an `options_array`, each item in the array inherits from the Option structure. All Options have an `option_type` attribute that indicates the structure of the option. The value of this attribute indicates how the option should be handled, and each type has different attributes. The possible values and their corresponding attributes are listed below.
+
+- `reference` - A terminal option. Contains a reference to a Document that can be added to the list of options chosen.
+    - `item` (APIReference): A reference to the chosen item.
+- `action` - A terminal option. Contains information describing an action, for use within Multiattack actions.
+    - `action_name` (string): The name of the action, according to its `name` attribute.
+    - `count` (number | string): The number of times this action can be repeated if this option is chosen.
+    - `type` (string = `"melee" | "ranged" | "ability" | "magic"`, optional): For attack actions that can be either melee, ranged, abilities, or magic.
+- `multiple` - When this option is chosen, all of its child options are chosen, and must be resolved the same way as a normal option.
+    - `items` (array): An array of Option objects. All of them must be taken if the option is chosen.
+- `choice` - A nested choice. If this option is chosen, the Choice structure contained within must be resolved like a normal Choice structure, and the results are the chosen options.
+    - `choice` (Choice): The Choice to resolve.
+- `string` - A terminal option. Contains a reference to a string.
+    - `string` (string): The string.
+- `ideal` - A terminal option. Contains information about an ideal.
+    - `desc` (string): A description of the ideal.
+    - `alignments` (ApiReference[]): A list of alignments of those who might follow the ideal.
+- `counted_reference` - A terminal option. Contains a reference to something else in the API along with a count.
+    - `count` (number): Count.
+    - `of` (ApiReference): Thing being referenced.
+- `score_prerequisite` - A terminal option. Contains a reference to an ability score and a minimum score.
+    - `ability_score` (ApiReference): Ability score being referenced.
+    - `minimum_score` (number): The minimum score required to satisfy the prerequisite.
+- `ability_bonus` - A terminal option. Contains a reference to an ability score and a bonus
+    - `ability_score` (ApiReference): Ability score being referenced
+    - `bonus` (number): The bonus being applied to the ability score
+- `breath` - A terminal option: Contains a reference to information about a breath attack.
+    - `name` (string): Name of the breath.
+    - `dc` (DC): Difficulty check of the breath attack.
+    - `damage` ([Damage]): Damage dealt by the breath attack, if any.
+- `damage` - A terminal option. Contains information about damage.
+    - `damage_type` (ApiReference): Reference to type of damage.
+    - `damage_dice` (string): Damage expressed in dice (e.g. "13d6").
+    - `notes` (string): Information regarding the damage.
+
+---
+
+## Interactive Monster Search with JavaScript
+
+import LearningObjectives from '@site/src/components/LearningObjectives';
+
+# Interactive Monster Search with JavaScript
+
+Welcome to this step-by-step tutorial on building an interactive monster search using JavaScript! If you have moderate experience with JavaScript, you're in the right place. By the end of this tutorial, you'll have a simple web application that allows users to search for and view Dungeons & Dragons 5th Edition (D&D 5e) monsters.
+
+<LearningObjectives objectives={[
+  "Learn to make a simple HTML webpage",
+  "Learn to interact with the API using HTTP requests in Javascript",
+  "Learn to create a form that allows users to get monsters from the API"
+]}/>
+
+## Setting Up the Project
+
+1. **Create a New Directory:** Start by creating a new directory for your project. You can name it something like "monster-search-app".
+
+2. **Initialize a Node.js Project:** Open your terminal, navigate to the project directory, and run the following command to initialize a Node.js project:
+
+   ```
+   npm init -y
+   ```
+
+3. **Install Axios:** Axios is a library for making HTTP requests. Install it by running the following command:
+
+   ```
+   npm install axios
+   ```
+
+4. **Create Files:** Inside your project directory, create three files: `index.html`, `styles.css`, and `script.js`.
+
+## Building the Frontend
+
+### `index.html`
+
+Let's start by creating the HTML structure for our web application:
+
+```html
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <link rel="stylesheet" href="styles.css" />
+    <title>Monster Search</title>
+  </head>
+  <body>
+    
+      Monster Search
+      <input type="text" id="monsterInput" placeholder="Enter a monster name" />
+      <button id="searchButton">Search</button>
+      
+    
+    <script src="script.js"></script>
+  </body>
+</html>
+```
+
+### `styles.css`
+
+Let's style our web application to make it visually appealing:
+
+```css
+body {
+  font-family: Arial, sans-serif;
+  background-color: #f0f0f0;
+  margin: 0;
+  padding: 0;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  min-height: 100vh;
+}
+
+.container {
+  background-color: white;
+  border-radius: 8px;
+  padding: 20px;
+  box-shadow: 0 0 10px rgba(0, 0, 0, 0.2);
+  text-align: center;
+}
+
+h1 {
+  color: #333;
+}
+
+#monsterInput {
+  width: 100%;
+  padding: 8px;
+  margin-bottom: 10px;
+  border: 1px solid #ccc;
+  border-radius: 4px;
+}
+
+#searchButton {
+  background-color: #007bff;
+  color: white;
+  border: none;
+  border-radius: 4px;
+  padding: 8px 12px;
+  cursor: pointer;
+}
+
+.monster-result {
+  margin-top: 20px;
+  padding: 10px;
+  border: 1px solid #ccc;
+  border-radius: 4px;
+  text-align: left;
+}
+```
+
+## Adding Functionality with JavaScript
+
+### `script.js`
+
+Now, let's add the functionality to our web application using JavaScript:
+
+```javascript
+const monsterInput = document.getElementById("monsterInput");
+const searchButton = document.getElementById("searchButton");
+const monsterResult = document.getElementById("monsterResult");
+
+searchButton.addEventListener("click", () => {
+  const monsterName = monsterInput.value.toLowerCase();
+  if (monsterName) {
+    searchMonster(monsterName);
+  } else {
+    monsterResult.innerHTML = "Please enter a monster name.";
+  }
+});
+
+function searchMonster(monsterName) {
+  monsterResult.innerHTML = "Searching...";
+
+  axios
+    .get(`https://www.dnd5eapi.co/api/monsters`)
+    .then((response) => {
+      const monsters = response.data.results;
+      const matchedMonster = monsters.find(
+        (monster) => monster.name.toLowerCase() === monsterName
+      );
+
+      if (matchedMonster) {
+        axios
+          .get(matchedMonster.url)
+          .then((monsterResponse) => {
+            const monsterData = monsterResponse.data;
+            monsterResult.innerHTML = `
+              ${monsterData.name}
+              Index: ${monsterData.index}
+              <!-- You can display more monster details here -->
+            `;
+          })
+          .catch((error) => {
+            monsterResult.innerHTML = "Error fetching monster details.";
+          });
+      } else {
+        monsterResult.innerHTML = "Monster not found.";
+      }
+    })
+    .catch((error) => {
+      monsterResult.innerHTML = "Error fetching monsters.";
+    });
+}
+```
+
+## Testing the Application
+
+1. Open your terminal and navigate to the project directory.
+
+2. Run the following command to start a simple server:
+
+   ```
+   npx serve
+   ```
+
+3. Visit `http://localhost:5000` in your web browser to see the monster search application in action.
+
+## Conclusion
+
+Congratulations! You've successfully built an interactive monster search web application using JavaScript, HTML, and CSS. Users can now search for D&D 5e monsters and view their details.
+
+---
+
+## Creating a Spell Card Library with React
+
+import LearningObjectives from "@site/src/components/LearningObjectives";
+
+# Creating a Spell Card Library with React
+
+This tutorial assumes you have basic knowledge of CSS, React and JavaScript. Specifically,
+
+- [How to write JSX](https://react.dev/learn/writing-markup-with-jsx)
+- [How to make and call asynchronous functions](https://javascript.info/async-await)
+
+You can brush up your knowledge on these subjects using the links provided and then drop back in!
+
+By the end of this tutorial we'll have a web application that lists every spell in the game. We can use this as a jumping-off point for whatever our hearts desire!
+
+- Add filters to only show spells of specific levels
+- Add a shuffle button that picks a random spell
+- Add a search bar that searches through spell names & descriptions
+
+<LearningObjectives
+  objectives={[
+    "Learn to interact with the API using HTTP requests in JavaScript",
+    "Learn to create reusable React components",
+  ]}
+/>
+
+## Setting Up the Project
+
+We'll be using [CodeSandbox](https://codesandbox.io) for this project because it gives us a quick starting point for our React code. Anything you write in your CodeSandbox project should be easily transportable to whatever React project you want to build.
+
+### Making your Project on CodeSandbox
+
+We'll be creating a new **React** project. If you feel comfortable with TypeScript you can use the **React TypeScript** project just as well.
+
+```mermaid
+flowchart LR
+    1[New sandbox]-->
+    2[Start from a template]-->
+    3[React]
+```
+
+### Adding some Code
+
+**Setup an api file to help make fetching from the D&D 5e API easier.** This keeps our api code in one place and lets us easily extend it if we want to add more endpoints. Click on the "New File" button next to the `src` folder in your CodeSandbox sidebar and make a new file called `api.js`:
+
+We can get all the spells in the 5e D&D API by making a request to `https://www.dnd5eapi.co/api/spells`. Let's go ahead and save that base url to a variable so we don't have to retype it in the future.
+
+```js title="/src/api.js"
+const BASE_URL = "https://www.dnd5eapi.co";
+
+export async function getAllSpells() {
+  return fetch(BASE_URL + "/api/spells").then((response) => response.json());
+}
+```
+
+If we run this function that we're exporting, we get a response of the following shape:
+
+```js
+{
+  count: 319,
+  results: [
+    {
+      index: "acid-arrow",
+      level: 2,
+      name: "Acid Arrow",
+      url: "/api/spells/acid-arrow"
+    },
+      // ...
+  ]
+}
+```
+
+## Setting up our Data
+
+The `index` is the unique id of this spell, `name` is a formatted string we can show our users, and `url` is a path to the spell in the API.
+
+Since we're going to want all of the spell data in our app, let's tweak that function a bit to actually pull the full spells down:
+
+```js title="/src/api.js"
+const BASE_URL = "https://www.dnd5eapi.co";
+
+export async function getAllSpells() {
+  const spellIndexes = await fetch(BASE_URL + "/api/spells").then((response) =>
+    response.json()
+  );
+  return Promise.all(
+    spellIndexes.results.map((index) =>
+      fetch(BASE_URL + index.url).then((response) => response.json())
+    )
+  );
+}
+```
+
+This might lag, but we'll figure that out later.
+
+> "Make it work, make it right, make it fast"
+
+If we run the function now, we'll get a lot more information from our spells. We mostly care about `name`, `level`, and `desc` for now but you can see everything the endpoint gives you [in the API reference](/docs/api/get-a-spell-by-index)
+
+## Rendering our Spell Cards
+
+`App.jsx` is where the bulk of our code will be. We have to load the spells when we mount the component, and then loop through our spells and render each one.
+
+```jsx title="/src/App.jsx"
+import { useEffect, useState } from "react";
+import { getAllSpells } from "./api";
+import "./styles.css";
+
+export default function App() {
+  const [spells, setSpells] = useState([]);
+
+  useEffect(() => {
+    getAllSpells().then(setSpells);
+  }, []);
+
+  return (
+    
+      
+        {spells.map((spell) => (
+          {spell.name}
+        ))}
+      
+    
+  );
+}
+```
+
+Alright! Now our app shows a bulleted list of spells. This is a great start, but we can make it look better. First, let's create a SpellCard component and pull out some more info that we want from the spell object:
+
+```jsx title="/src/SpellCard.jsx"
+export default function SpellCard({ spell }) {
+  return (
+    
+      <hgroup>
+        {spell.name}
+        <small>
+          {spell.level > 0 && `Level ${spell.level} `}
+          {spell.school.name}
+          {spell.level === 0 && " cantrip"}
+        </small>
+      </hgroup>
+      
+        
+          Casting Time
+          {spell.casting_time}
+        
+        
+          Range
+          {spell.range}
+        
+        
+          Components
+          {spell.components.join(", ")}
+        
+        
+          Duration
+          {spell.duration}
+        
+      
+    
+  );
+}
+```
+
+Now that we have our separate component, we need to pull it into our App.jsx:
+
+```jsx title="/src/App.jsx"
+import { useEffect, useState } from "react";
+import { getAllSpells } from "./api";
+import SpellCard from "./SpellCard";
+import "./styles.css";
+
+export default function App() {
+  const [spells, setSpells] = useState([]);
+
+  useEffect(() => {
+    getAllSpells().then(setSpells);
+  }, []);
+
+  return (
+    
+      
+        {spells.map((spell) => (
+          <SpellCard key={spell.index} spell={spell} />
+        ))}
+      
+    
+  );
+}
+```
+
+And now that we have some more details displaying, let's hop into the styles and organize it a bit better
+
+<iframe
+  src="https://codesandbox.io/embed/d-d-5e-spell-cards-jsvnct?fontsize=14&hidenavigation=1&module=%2Fsrc%2Fstyles.css&theme=dark"
+  style={{
+    width: "100%",
+    height: "500px",
+    border: 0,
+    borderRadius: "4px",
+    overflow: "hidden",
+  }}
+  title="D&amp;D 5e Spell Cards"
+  allow="accelerometer; ambient-light-sensor; camera; encrypted-media; geolocation; gyroscope; hid; microphone; midi; payment; usb; vr; xr-spatial-tracking"
+  sandbox="allow-forms allow-modals allow-popups allow-presentation allow-same-origin allow-scripts"
+></iframe>
+
+Looking good! We can review [the entire project](https://codesandbox.io/s/d-d-5e-spell-cards-jsvnct) and see how all our code came together in the end!
+
+## Bonus
+
+Depending on our connection, these cards could take a hot minute to load! Let's add a loading indicator and make sure we're caching the request so subsequent visits can be faster.
+
+There are plenty of libraries that can help with this like [Reacy Query](https://tanstack.com/query/v3) but we'll just do it manually.
+
+First, we'll add an indicator that we're loading. Let's just keep it plain text for now...
+
+```jsx title="/src/App.jsx"
+return (
+  
+    {spells.length === 0 && Loading...}
+    
+      {spells.map((spell) => (
+        <SpellCard key={spell.index} spell={spell} />
+      ))}
+    
+  
+);
+```
+
+And then we'll modify our useEffect to use [localStorage](https://developer.mozilla.org/en-US/docs/Web/API/Window/localStorage) to save our spells and load them if available:
+
+```jsx title="/src/App.jsx"
+useEffect(() => {
+  const savedSpells = localStorage.getItem("spells");
+  if (savedSpells) setSpells(JSON.parse(savedSpells));
+  getAllSpells().then((spells) => {
+    setSpells(spells);
+    localStorage.setItem("spells", JSON.stringify(spells));
+  });
+}, []);
+```
+
+And boom! Now the page will render our saved list and then update with the new list (and save that one) just in case there are any changes.
+
+---
+
+## Command Line Spellbook with Python
+
+import LearningObjectives from '@site/src/components/LearningObjectives';
+
+# Command Line Spellbook with Python
+
+<LearningObjectives objectives={[
+    "Learn how to interact with APIs using Python",
+    "Learn to write a simple Python script",
+    "Learn to make a script interactive",
+    "Create a simple tool to explore D&D spells right from your terminal"
+]}/>
+
+## Setting Up the Project
+
+1. **Create a New Directory:** Start by creating a new directory for your project. Let's call it "spellbook-cli".
+
+2. **Create a Python Script:** Inside the project directory, create a file named `spellbook.py`.
+
+## Building the Command-Line Spellbook
+
+### `spellbook.py`
+
+Let's start building our command-line spellbook:
+
+```python
+import requests
+
+def display_spell(spell_data):
+    print(f"Name: {spell_data['name']}")
+    print(f"Level: {spell_data['level']}")
+    print(f"Index: {spell_data['index']}")
+    print(f"URL: {spell_data['url']}")
+    print()
+
+def main():
+    url = "https://www.dnd5eapi.co/api/spells"
+    headers = {'Accept': 'application/json'}
+
+    response = requests.get(url, headers=headers)
+
+    if response.status_code == 200:
+        spells_data = response.json()
+        spells = spells_data['results']
+
+        print("Welcome to the D&D 5e Spellbook!")
+        print(f"Total Spells: {spells_data['count']}\n")
+
+        while True:
+            print("Commands:")
+            print("1 - List all spells")
+            print("2 - Search for a spell by name")
+            print("3 - Exit")
+
+            choice = input("Enter your choice: ")
+
+            if choice == '1':
+                print("\nList of Spells:")
+                for spell in spells:
+                    display_spell(spell)
+            elif choice == '2':
+                spell_name = input("Enter the spell name: ").lower()
+                matching_spells = [spell for spell in spells if spell_name in spell['name'].lower()]
+                print("\nMatching Spells:")
+                for spell in matching_spells:
+                    display_spell(spell)
+            elif choice == '3':
+                print("Goodbye!")
+                break
+            else:
+                print("Invalid choice. Please select a valid option.")
+
+if __name__ == "__main__":
+    main()
+```
+
+## Running the Spellbook
+
+1. Open your terminal and navigate to the project directory.
+
+2. Run the following command to execute the `spellbook.py` script:
+
+   ```
+   python spellbook.py
+   ```
+
+3. Follow the on-screen prompts to explore and search for D&D 5e spells right from your command line.
+
+## Conclusion
+
+Congratulations! You've successfully built an interactive command-line spellbook using Python. This tool allows you to list all spells, search for spells by name, and exit the application. As you become more comfortable with Python programming, you can explore adding more features, improving user experience, or integrating additional APIs.
+
+Remember, practice is essential for becoming a proficient developer. Keep coding, experimenting, and learning, and you'll continue to develop your programming skills. Happy adventuring! 🪄
+
+---
+
+## Discover D&D Races with Shell Scripting
+
+import LearningObjectives from '@site/src/components/LearningObjectives';
+
+# Discover D&D Races with Shell Scripting
+
+<LearningObjectives objectives={[
+    "Learn to use cURL",
+    "Learn to write a simple Bash script",
+    "Learn to make a script interactive"
+]}/>
+
+## Preparing Your Bash Adventure
+
+Before we set off on our coding journey, make sure you have these:
+
+1. A command-line terminal (Bash)
+2. An internet connection
+3. Your excitement and curiosity
+
+## Building the D&D Race Search Tool
+
+1. **Summon the Magic of Curl:**
+
+    Open your command-line terminal and let's cast our first spell to fetch D&D race information using the mighty `curl` command. Type or copy-paste the following:
+
+    ```bash
+    curl -L 'https://www.dnd5eapi.co/api/races/dwarf' -H 'Accept: application/json'
+    ```
+
+    When you hit Enter, you'll unveil the details of the D&D Dwarf race!
+
+2. **Create Your Own Spell (Bash Script):**
+
+    Now, let's create a magical script named `dnd_race_search.sh` using your favorite text editor (like `nano`, `vim`, or even a code editor).
+
+    ```bash
+    #!/bin/bash
+
+    echo "Welcome to the D&D Race Search Tool!"
+    echo "-----------------------------------"
+    echo
+
+    read -p "Enter the name of a D&D race: " race_name
+
+    curl -L "https://www.dnd5eapi.co/api/races/$race_name" -H 'Accept: application/json'
+    ```
+
+3. **Enchant Your Script:**
+
+    Before you can use your script, you'll need to make it executable (aka runnable). In your terminal, type:
+
+    ```bash
+    chmod +x dnd_race_search.sh
+    ```
+
+4. **Embark on Your Quest:**
+
+    Cast your spell and run your script:
+
+    ```bash
+    ./dnd_race_search.sh
+    ```
+
+    You'll be prompted to enter the name of a D&D race. For now, let's try "dwarf" and see what magnificent details unfold!
+
+## The Mystical Output Awaits!
+
+Prepare yourself, for the secrets of the D&D Dwarf race shall be revealed before your very eyes! Once you enter "dwarf," you should expect an awe-inspiring response similar to this:
+
+```
+Welcome to the D&D Race Search Tool!
+-----------------------------------
+
+Enter the name of a D&D race: dwarf
+
+{
+  "index": "dwarf",
+  "name": "Dwarf",
+  "speed": 25,
+  "ability_bonuses": [
+    {
+      "ability_score": {
+        "index": "con",
+        "name": "CON",
+        "url": "/api/ability-scores/con"
+      },
+      "bonus": 2
+    }
+  ],
+  "alignment": "Most dwarves are lawful, believing firmly in the benefits of a well-ordered society. They tend toward good as well, with a strong sense of fair play and a belief that everyone deserves to share in the benefits of a just order.",
+  "age": "Dwarves mature at the same rate as humans, but they're considered young until they reach the age of 50. On average, they live about 350 years.",
+  "size": "Medium",
+  "size_description": "Dwarves stand between 4 and 5 feet tall and average about 150 pounds. Your size is Medium.",
+  ...
+  ...
+}
+
+```
+
+## Celebrate Your Coding Victory!
+
+Congratulations, young adventurers! You've crafted your very own D&D Race Search Tool using Bash scripting. You can now explore different races and learn about their unique abilities, traits, and more. Your journey has just begun, and there's so much more to discover in the realm of coding and Dungeons & Dragons. May your code be bug-free and your rolls be critical hits! 🎉🏰🧝‍♂️
+
+---
+
+## Getting Started
+
+import Tabs from '@theme/Tabs';
+import TabItem from '@theme/TabItem';
+
+# Getting Started
+
+Let's make our first API request to the D&D 5th Edition API!
+
+Open up a terminal and use [cURL](http://curl.haxx.se/), [PowerShell](https://learn.microsoft.com/en-us/powershell/), or [httpie](http://httpie.org/)
+to make an API request for a resource. You can also scroll through the
+definitions below and send requests directly from the endpoint documentation!
+
+For example, if you paste and run this terminal command:
+
+<Tabs queryString="os">
+<TabItem value="unix" label="cURL">
+
+```bash
+curl -X GET "https://www.dnd5eapi.co/api/ability-scores/cha" -H "Accept: application/json"
+
+# or with httpie
+http dnd5eapi.co/api/ability-scores/cha
+```
+
+</TabItem>
+<TabItem value="win" label="PowerShell">
+
+```powershell
+Invoke-RestMethod -Uri https://www.dnd5eapi.co/api/ability-scores/cha
+```
+
+</TabItem>
+</Tabs>
+
+We should see a result containing details about the Charisma ability score:
+
+```json
+{
+  "index": "cha",
+  "name": "CHA",
+  "full_name": "Charisma",
+  "desc": [
+    "Charisma measures your ability to interact effectively with others. It includes such factors as confidence and eloquence, and it can represent a charming or commanding personality.",
+    "A Charisma check might arise when you try to influence or entertain others, when you try to make an impression or tell a convincing lie, or when you are navigating a tricky social situation. The Deception, Intimidation, Performance, and Persuasion skills reflect aptitude in certain kinds of Charisma checks."
+  ],
+  "skills": [
+    {
+      "name": "Deception",
+      "index": "deception",
+      "url": "/api/skills/deception"
+    },
+    {
+      "name": "Intimidation",
+      "index": "intimidation",
+      "url": "/api/skills/intimidation"
+    },
+    {
+      "name": "Performance",
+      "index": "performance",
+      "url": "/api/skills/performance"
+    },
+    {
+      "name": "Persuasion",
+      "index": "persuasion",
+      "url": "/api/skills/persuasion"
+    }
+  ],
+  "url": "/api/ability-scores/cha"
+}
+```
+
+---
+
+## GraphQL Fundamentals
+
+import LearningObjectives from "@site/src/components/LearningObjectives";
+
+# GraphQL Fundamentals
+
+GraphQL is a powerful and flexible way to fetch data from the D&D 5e SRD API. In this tutorial, we will learn how to build and try out a range of GraphQL queries using the [Apollo Sandbox Explorer](https://studio.apollographql.com/sandbox?endpoint=https%3A%2F%2Fwww.dnd5eapi.co%2Fgraphql%2F2014).
+
+<LearningObjectives
+  objectives={[
+    "Understand the limitations of the RESTful API",
+    "Understand how the GraphQL API solves these limitations",
+    "Build and test GraphQL queries with Apollo Sandbox Explorer",
+  ]}
+/>
+
+## From REST to GraphQL
+
+In the [Getting Started](./getting-started.mdx) tutorial, we used `curl` to make an HTTP `GET` request to a specific URL that returned the data we wanted. Using that approach, the URL we made a request to corresponded directly to the resource we wanted to fetch; `/api/ability-scores/cha` refers to the resource within the `ability-scores` collection which has the index `cha`.
+
+This is one of the defining features of a RESTful API: a URL corresponds to a resource. The RESTful endpoints of the D&D 5e SRD API follow this uniform interface to make it easy for us to fetch the resources we need, but they don't allow us much control over what data is returned by the API.
+
+For example, if we make a `GET` request to `https://www.dnd5eapi.co/api/monsters`, we will receive only the `index`, `name` and `url` of all the monsters in the SRD database. This is a sensible default, as it gives us the information we need to discover all the monsters, while keeping the response relatively lightweight by excluding unnecessary details. But what if I want to know more about a specific monster?
+
+Making a request to one of the `url`s provided, such as `/api/monsters/aboleth`, we will receive _all_ of the data about the Aboleth, including its stats, actions, proficiencies, etc. But what if we just wanted to know the Aboleth's armor class? We've just wasted time and bandwidth transporting all that extra information.
+
+And what if we want to fetch the armor classes of _all_ of the monsters? Using the REST API, we would have to make a separate request for every single monster in the API - that's 334 HTTP requests! Not only would this be slow, it would be a pain to implement.
+
+This is where GraphQL saves the day. GraphQL stands for "Graph Query Language". It is a computer language that allows us to query an API much more flexibly than is allowed by the REST API. GraphQL allows us to specify exactly which parts of a resource we want to receive, and to request that data for many resources all in one request. In this tutorial, we will look at how we can build and execute powerful queries against the D&D 5e SRD API using GraphQL.
+
+## Sandbox Explorer
+
+As well as data, GraphQL servers are able to serve their own schemas and documentation. This allows us to use tools such as the [Apollo Sandbox Explorer](https://studio.apollographql.com/sandbox?endpoint=https%3A%2F%2Fwww.dnd5eapi.co%2Fgraphql%2F2014) to discover the API's capabilities and to build and test our queries.
+
+Open the explorer in a new tab now so that you can follow along with the tutorial. You should see a page like this:
+
+![A screenshot of the Apollo Sandbox Explorer](/img/tutorial/graphql/01-explorer.png)
+
+On the left we can see the documentation - a list of all the resources we can query. In the middle are the text boxes where we can write our GraphQL query, as well as any variables that we might want to pass with the request. Finally on the right is the "Response" panel, where any results of queries we execute will be displayed.
+
+## Our First Query
+
+Let's start by getting a list of all the monsters in the database. To do this, we can build a query using the panel on the left-hand side of the explorer. Scroll down to "monsters" and click the <svg viewBox="0 0 24 24" role="checkbox" aria-checked="false" style={{width: '2ch', color: 'var(--ifm-color-primary-darker)', verticalAlign: 'text-top', marginInline: '0.25ch'}}><g fill="none" stroke="currentColor" strokeLinecap="round" strokeLinejoin="round" strokeWidth="2"><path d="M12 7.5v9M7.5 12h9M12 .75C18.213.75 23.25 5.787 23.25 12S18.213 23.25 12 23.25.75 18.213.75 12 5.787.75 12 .75z"></path></g></svg> ("plus") icon to the left. You should then be presented with a list of attributes that we can request. You should also see the following code appear in the editor:
+
+```graphql
+query Monsters {
+  monsters {
+
+  }
+}
+```
+
+From the list on the left-hand side, scroll down to the "Fields" section and select `name` and `index`, and then click the blue "Monsters" button in the top-right corner of the "Operation" box to execute the query. The result should look like this:
+
+![A screenshot of the Sandbox Explorer with the query and its results](/img/tutorial/graphql/02-query-results.png)
+
+In the results pane, we can see the list of all the monsters in the database, and each entry only has the attributes we requested.
+
+## Nested Attributes
+
+Now let's try getting the armor class of each monster. If we select the `armor_class` attribute from the list of fields, it appears in our query with a set of curly braces, like so:
+
+```graphql
+query Monsters {
+  monsters {
+    name
+    index
+    armor_class {
+
+    }
+  }
+}
+```
+
+We are also presented with a list of fields that exist inside the `armor_class` object. Let's select `value` and `type`, and execute the query again. Here's what we should see now:
+
+![A screenshot of the Sandbox Explorer with the nested query and its results](/img/tutorial/graphql/03-nested-query-results.png)
+
+Here we can see that each monster now has an array of possible armor classes, and we can see the value and type of each one, but we haven't fetched any unwanted data, like the conditions or descriptions of the armor classes.
+
+Take a moment now to try building some queries of your own. Use the documentation on the left of the screen to build your queries, or for an extra challenge, try writing a query by hand.
+
+## Fetching a Single Resource
+
+You may have noticed that each top-level field in the documentation comes in a singular and a plural form. For example, `abilityScore` and `abilityScores`, `monster` and `monsters`. The plural forms denote fields that allow us to query a collection of resources, as we have seen with the `monsters` field, but the singular forms (e.g. `monster`) allow us to query a single resource. All we need is the resource's `index`, which is its unique identifier.
+
+Let's try this out now.
+
+Enter the following query into the Explorer:
+
+```graphql
+query Monster {
+  monster(index: "aboleth") {
+    name
+    challenge_rating
+    hit_points
+  }
+}
+```
+
+You will notice that we are making use of the `index` argument to specify that we want information about the Aboleth. When we execute the query, this is exactly what we get.
+
+But what if we don't always want to fetch information about the same monster? To facilitate this, we can use variables. The query below declares a variable called `$index`, which must be passed a `String` value when we make our request.
+
+```graphql
+query Monster($index: String) {
+  monster(index: $index) {
+    name
+    challenge_rating
+    hit_points
+  }
+}
+```
+
+To pass variables, we can provide a JSON object along with our request, where each field corresponds to a variable. Add the following JSON code to the "Variables" box in the explorer:
+
+```json
+{
+  "index": "aboleth"
+}
+```
+
+Execute the query and we should see the same results as before, except this time we can request a different monster just by changing the value of our `index` variable. Take this opportunity to pass in different indices and observe how this affects the response.
+
+## Next Steps
+
+Now that we can build and test a range of GraphQL queries, we are ready to apply these skills to a real project. In future tutorials, we will bring together GraphQL and other languages and technologies to build fun and interesting tools.
+
+---
+
+## Tutorials
+
+import TutorialsList from "@site/src/components/TutorialsList"
+
+# Tutorials
+
+Welcome to the tutorials section of the documentation. Here you will find a collection of tutorials that will help you get started with the API.
+
+The currently available tutorials are:
+
+## Beginner
+
+Beginner tutorials are designed to help you get started programming using the API as a learning environment. They are intended for people who have done little to no programming and are completely new to APIs.
+
+<TutorialsList category="beginner" />
+
+## Basic
+
+Basic tutorials are designed to help you get started with the API. They are intended for people who have done some programming and are new to the API.
+
+<TutorialsList category="basic" />
+
+## Advanced
+
+Advanced tutorials are designed to help you build more complex applications with the API. They are intended for developers who are comfortable with programming and want to build more advanced applications.
+
+<TutorialsList category="advanced" />
