@@ -1,3 +1,7 @@
+---
+sidebar_position: 2
+---
+
 # FAQ
 
 ### A monster, spell, subclass, etc. is missing from the API / Database. Can I add it?
@@ -13,15 +17,6 @@ The SRD, or Systems Reference Document, contains guidelines for publishing conte
 ### What is the OGL?
 
 The Open Game License (OGL) is a public copyright license by Wizards of the Coast that may be used by tabletop role-playing game developers to grant permission to modify, copy, and redistribute some of the content designed for their games, notably game mechanics. However, they must share-alike copies and derivative works. [More information about the OGL can be found here.](https://en.wikipedia.org/wiki/Open_Game_License)
-
-### Can I support this project? Where can I contribute to this project?
-
-Yes! Please! This is a evolving API and having fresh ideas are always welcome! You can open an issue in either repo, open a PR for changes, or just discuss with other users in this discord.
-
-Additionally, there is a separate Docker image for each repo so you only have to run as much as you need.
-
-[The repo for the data lives here.](https://github.com/bagelbits/5e-database)
-[The repo for the API lives here.](https://github.com/bagelbits/5e-srd-api)
 
 ### Can this API be self hosted?
 

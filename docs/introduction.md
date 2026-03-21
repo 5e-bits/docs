@@ -4,35 +4,47 @@ sidebar_position: 1
 
 # Introduction
 
-### :arrow_right: [Skip to the tutorials](/docs/tutorials/)
+Welcome to the D&D 5e SRD API, the Dungeons & Dragons 5th Edition API.
 
-*If you wanna skip right into the tutorial, go ahead. We don't mind!*
+This documentation will help you familiarize yourself with the resources available and how to consume them with HTTP requests. Read through the getting started [tutorial](/docs/tutorials/) before you dive in.
 
-### :wave: Welcome
+## Base URL
 
-Welcome to the D&D 5e SRD API, the Dungeons & Dragons 5th Edition API!
+All API requests are made to the following base URL:
 
-This documentation should help you familiarize yourself with the resources available and how to consume them with HTTP requests. Read through the [Tutorial](/docs/tutorials/) getting started section before you dive in.
+```
+https://www.dnd5eapi.co/api
+```
 
-Most of your problems should be solved just by reading through it.
+## Authentication
 
-### :lock: Authentication
+This is a completely open API. **No authentication is required to query and get data.** This also means that we've limited what you can do to just `GET`-ing the data.
 
-This is a completely open API. **No authentication is required to query and get data**. This also means that we've limited what you can do to just `GET`-ing the data.
+## Rate Limits
 
-If you find a mistake in the data, feel free to [message us](https://discord.gg/TQuYTv7)!
+There is a limit of 10,000 requests per second per IP. This is subject to change if something more practical needs to be enforced.
 
-### :smile: Chat
+## GraphQL
 
-Come hang out with us [on Discord](https://discord.gg/TQuYTv7)! We're friendly and would love to hear what you make with the API!
+This API also supports [GraphQL](https://graphql.org/). The GraphQL endpoint is:
 
-### :handshake: Contribute
+```
+https://www.dnd5eapi.co/graphql
+```
+
+See the [GraphQL tutorial](/docs/tutorials/beginner/graphql) for examples and how to use the Apollo sandbox explorer.
+
+## Community
+
+Come hang out with us [on Discord](https://discord.gg/TQuYTv7). We're friendly and would love to hear what you make with the API.
+
+## Contributing
 
 This API is built from two repositories:
 
-- The repo containing the data lives here: https://github.com/5e-bits/5e-database
-- The repo with the API implementation lives here: https://github.com/5e-bits/5e-srd-api
+- [5e-database](https://github.com/5e-bits/5e-database) — the data
+- [5e-srd-api](https://github.com/5e-bits/5e-srd-api) — the API implementation
 
-This is a evolving API and having fresh ideas are always welcome! You can
-open an issue in either repo, open a PR for changes, or just discuss with
-other users in this Discord.
+This is an evolving API and fresh ideas are always welcome. You can open an issue in either repo, open a PR for changes, or discuss with other users on Discord.
+
+If you find a mistake in the data, feel free to [let us know](https://discord.gg/TQuYTv7).
