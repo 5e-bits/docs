@@ -204,23 +204,17 @@ export default function AiContextMenu(): JSX.Element {
 
   function buildAiUrl(baseUrl: string, queryParam: string): string {
     const mdUrl = getMarkdownUrl();
-    const pageTitle = document.querySelector("h1")?.textContent || document.title;
-    if (mdUrl) {
-      const prompt = `Read from ${mdUrl} so I can ask questions about it.`;
-      return `${baseUrl}?${queryParam}=${encodeURIComponent(prompt)}`;
-    }
-    // For API pages without .md files, copy content and prompt to paste
-    const prompt = `I have a page from the D&D 5e SRD API documentation: "${pageTitle}". The content is in my clipboard. I'll paste it so you can help me with questions about it.`;
+    const pageUrl = window.location.href;
+    const prompt = mdUrl
+      ? `Fetch ${mdUrl} and read the documentation so I can ask questions about it. The page is located at ${pageUrl}`
+      : `Fetch ${pageUrl} and read the page content so I can ask questions about this D&D 5e SRD API documentation. You can also fetch https://5e-bits.github.io/docs/llms.txt for a site overview.`;
     return `${baseUrl}?${queryParam}=${encodeURIComponent(prompt)}`;
   }
 
   async function handleOpenInAi(item: { id: string; url: string }) {
-    const mdUrl = getMarkdownUrl();
-    // Copy markdown to clipboard for API pages (no .md file) or as fallback
-    if (!mdUrl) {
-      const md = getPageMarkdown();
-      await navigator.clipboard.writeText(md);
-    }
+    // Always copy markdown to clipboard as a fallback
+    const md = getPageMarkdown();
+    await navigator.clipboard.writeText(md);
 
     let finalUrl: string;
     if (item.id === "claude") {
