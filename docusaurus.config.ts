@@ -16,16 +16,7 @@ const config: Config = {
   markdown: {
     mermaid: true,
   },
-  themes: [
-    [
-      require.resolve("@easyops-cn/docusaurus-search-local"),
-      /** @type {import("@easyops-cn/docusaurus-search-local").PluginOptions} */
-      {
-        searchBarShortcutHint: false,
-      },
-    ],
-    "@docusaurus/theme-mermaid",
-  ],
+  themes: ["@docusaurus/theme-mermaid"],
 
   // Even if you don't use internationalization, you can use this field to set
   // useful metadata like html lang. For example, if your site is Chinese, you
@@ -50,7 +41,21 @@ const config: Config = {
     ],
   ],
 
-  plugins: [require.resolve("./src/plugins/dynamic-tutorials-list")],
+  plugins: [
+    require.resolve("./src/plugins/dynamic-tutorials-list"),
+    [
+      "docusaurus-plugin-llms",
+      {
+        generateLLMsTxt: true,
+        generateLLMsFullTxt: true,
+        generateMarkdownFiles: true,
+        docsDir: "docs",
+        title: "D&D 5e SRD API Documentation",
+        description:
+          "REST + GraphQL API for the 5e SRD database. Includes guides, tutorials, API reference, and schema documentation.",
+      },
+    ],
+  ],
 
   themeConfig: {
     languageTabs: [
@@ -178,12 +183,6 @@ const config: Config = {
           type: "docsVersionDropdown",
           position: "left",
           dropdownActiveClassDisabled: true,
-        },
-        {
-          type: "doc",
-          docId: "faq",
-          position: "left",
-          label: "FAQ",
         },
         {
           to: "https://5e-bits.github.io/dnd-uptime",

@@ -13,7 +13,7 @@ import type { SidebarsConfig } from "@docusaurus/plugin-content-docs";
 const sidebars: SidebarsConfig = {
   referenceSidebar: [
     "introduction",
-    "tutorials/index",
+    "faq",
     {
       type: "category",
       label: "Reference",
