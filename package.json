@@ -30,7 +30,7 @@
     "url": "^0.11.4"
   },
   "devDependencies": {
-    "@docusaurus/module-type-aliases": "3.9.2",
+    "@docusaurus/module-type-aliases": "3.10.0",
     "@docusaurus/tsconfig": "3.10.0",
     "@docusaurus/types": "3.10.0",
     "typescript": "~6.0.2"
