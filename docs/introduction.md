@@ -24,6 +24,12 @@ This is a completely open API. **No authentication is required to query and get 
 
 There is a limit of 10,000 requests per second per IP. This is subject to change if something more practical needs to be enforced.
 
+## Multilingual Support
+
+API responses are available in multiple languages. Append `?lang={code}` to any resource request to receive translated content (e.g. `?lang=de` for German). English is always the default and fallback — untranslated fields are returned in English automatically.
+
+See the [Multilingual Support](/reference/multilingual) reference for the full list of supported languages, response behavior, and how to contribute a translation.
+
 ## GraphQL
 
 This API also supports [GraphQL](https://graphql.org/). The GraphQL endpoint is:
