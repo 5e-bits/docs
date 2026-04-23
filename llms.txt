@@ -9,10 +9,10 @@ This file contains links to documentation sections following the llmstxt.org sta
 - [FAQ](https://5e-bits.github.io/docs/docs/faq.md): Please check if the data is within [the SRD.](https://media.wizards.com/2016/downloads/DND/SRD-OGL_V5.1.pdf) If it is, feel free to open an issue o...
 - [Introduction](https://5e-bits.github.io/docs/docs/introduction.md): Welcome to the D&D 5e SRD API, the Dungeons & Dragons 5th Edition API.
 - [Schemas](https://5e-bits.github.io/docs/docs/reference/schemas.md): Definitions of all schemas will be accessible in a future update. Two of the most common schemas are described here.
-- [Interactive Monster Search with JavaScript](https://5e-bits.github.io/docs/docs/tutorials/advanced/monster-search-with-javascript.md): import LearningObjectives from '@site/src/components/LearningObjectives';
-- [Creating a Spell Card Library with React](https://5e-bits.github.io/docs/docs/tutorials/advanced/react-spell-cards.md): import LearningObjectives from "@site/src/components/LearningObjectives";
-- [Command Line Spellbook with Python](https://5e-bits.github.io/docs/docs/tutorials/advanced/terminal-spellbook-with-python.md): import LearningObjectives from '@site/src/components/LearningObjectives';
-- [Discover D&D Races with Shell Scripting](https://5e-bits.github.io/docs/docs/tutorials/basic/discover-dnd-races-with-shell-scripting.md): import LearningObjectives from '@site/src/components/LearningObjectives';
-- [Getting Started](https://5e-bits.github.io/docs/docs/tutorials/beginner/getting-started.md): import Tabs from '@theme/Tabs';
-- [GraphQL Fundamentals](https://5e-bits.github.io/docs/docs/tutorials/beginner/graphql.md): import LearningObjectives from "@site/src/components/LearningObjectives";
-- [Tutorials](https://5e-bits.github.io/docs/docs/tutorials/index.md): import TutorialsList from "@site/src/components/TutorialsList"
+- [Interactive Monster Search with JavaScript](https://5e-bits.github.io/docs/docs/tutorials/advanced/monster-search-with-javascript.md): Welcome to this step-by-step tutorial on building an interactive monster search using JavaScript! If you have moderate experience with JavaScript, ...
+- [Creating a Spell Card Library with React](https://5e-bits.github.io/docs/docs/tutorials/advanced/react-spell-cards.md): This tutorial assumes you have basic knowledge of CSS, React and JavaScript. Specifically,
+- [Command Line Spellbook with Python](https://5e-bits.github.io/docs/docs/tutorials/advanced/terminal-spellbook-with-python.md): <LearningObjectives objectives={[
+- [Discover D&D Races with Shell Scripting](https://5e-bits.github.io/docs/docs/tutorials/basic/discover-dnd-races-with-shell-scripting.md): <LearningObjectives objectives={[
+- [Getting Started](https://5e-bits.github.io/docs/docs/tutorials/beginner/getting-started.md): Let's make our first API request to the D&D 5th Edition API!
+- [GraphQL Fundamentals](https://5e-bits.github.io/docs/docs/tutorials/beginner/graphql.md): GraphQL is a powerful and flexible way to fetch data from the D&D 5e SRD API. In this tutorial, we will learn how to build and try out a range of G...
+- [Tutorials](https://5e-bits.github.io/docs/docs/tutorials/index.md): Welcome to the tutorials section of the documentation. Here you will find a collection of tutorials that will help you get started with the API.

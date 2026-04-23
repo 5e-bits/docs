@@ -1,7 +1,6 @@
 # Getting Started
 
-> import Tabs from '@theme/Tabs';
-import TabItem from '@theme/TabItem';
+> Let's make our first API request to the D&D 5th Edition API!
 
 import Tabs from '@theme/Tabs';
 import TabItem from '@theme/TabItem';

@@ -1,6 +1,6 @@
 # Tutorials
 
-> import TutorialsList from "@site/src/components/TutorialsList"
+> Welcome to the tutorials section of the documentation. Here you will find a collection of tutorials that will help you get started with the API.
 
 import TutorialsList from "@site/src/components/TutorialsList"
 

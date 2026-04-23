@@ -1,6 +1,10 @@
 # Discover D&D Races with Shell Scripting
 
-> import LearningObjectives from '@site/src/components/LearningObjectives';
+> <LearningObjectives objectives={[
+    "Learn to use cURL",
+    "Learn to write a simple Bash script",
+    "Learn to make a script interactive"
+]}/>
 
 import LearningObjectives from '@site/src/components/LearningObjectives';
 
