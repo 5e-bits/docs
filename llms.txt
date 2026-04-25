@@ -7,6 +7,7 @@ This file contains links to documentation sections following the llmstxt.org sta
 ## Table of Contents
 
 - [FAQ](https://5e-bits.github.io/docs/docs/faq.md): Please check if the data is within [the SRD.](https://media.wizards.com/2016/downloads/DND/SRD-OGL_V5.1.pdf) If it is, feel free to open an issue o...
+- [GraphQL](https://5e-bits.github.io/docs/docs/graphql.md): This API supports [GraphQL](https://graphql.org/). The GraphQL URL for this API
 - [Introduction](https://5e-bits.github.io/docs/docs/introduction.md): Welcome to the D&D 5e SRD API, the Dungeons & Dragons 5th Edition API.
 - [Multilingual Support](https://5e-bits.github.io/docs/docs/reference/multilingual.md): The D&D 5e SRD API supports multilingual responses, allowing you to request translated content in supported languages. English is always the defaul...
 - [Schemas](https://5e-bits.github.io/docs/docs/reference/schemas.md): Definitions of all schemas will be accessible in a future update. Two of the most common schemas are described here.
