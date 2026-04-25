@@ -36,16 +36,16 @@ Language codes follow the [BCP 47](https://www.rfc-editor.org/rfc/rfc5646) stand
 
 Only human-readable text fields are translated. Structural fields (indexes, URLs, numeric values, cross-references) always come from the English base document.
 
-| Field | Translatable |
-|---|---|
-| `name` | Yes |
-| `desc` | Yes |
-| `higher_level` | Yes |
-| `equipment_category.name` | Yes |
-| `index` | No |
-| `url` | No |
-| Numeric values (HP, range, duration, etc.) | No |
-| API reference objects | No |
+| Field                                      | Translatable |
+| ------------------------------------------ | ------------ |
+| `name`                                     | Yes          |
+| `desc`                                     | Yes          |
+| `higher_level`                             | Yes          |
+| `equipment_category.name`                  | Yes          |
+| `index`                                    | No           |
+| `url`                                      | No           |
+| Numeric values (HP, range, duration, etc.) | No           |
+| API reference objects                      | No           |
 
 ## Discovering Supported Languages
 
