@@ -8,13 +8,15 @@ The D&D 5e SRD API supports multilingual responses, allowing you to request tran
 
 ## Currently Supported Locales
 
-| Code | Language |
-|---|---|
-| `en` | English (default) |
-| `de` | German |
-| `fr` | French |
+Locale availability differs per ruleset year — the 2014 and 2024 catalogs do not have to ship the same translations.
 
-This list reflects locales with translated content available at the time of writing. The authoritative, always-current list is served by the API itself — query [`/api/{year}/locales`](#list-all-supported-locales) to discover the locales available for a given ruleset year at runtime.
+| Code | Language | 2014 | 2024 |
+|---|---|---|---|
+| `en` | English (default) | Yes | Yes |
+| `fr-FR` | French (France) | Yes | — |
+| `pt-BR` | Portuguese (Brazil) | Yes | Yes |
+
+This table reflects locales with translated content at the time of writing. The authoritative, always-current list is served by the API itself — query [`/api/{year}/locales`](#list-all-supported-locales) to discover the locales available for a given ruleset year at runtime.
 
 ## Requesting a Language
 
@@ -23,7 +25,7 @@ This list reflects locales with translated content available at the time of writ
 Append `?lang={code}` to any resource request. This is the recommended approach because it is explicit and cache-friendly.
 
 ```
-GET /api/2014/spells/acid-arrow?lang=de
+GET /api/2014/spells/acid-arrow?lang=fr-FR
 ```
 
 ### Accept-Language Header
@@ -31,10 +33,10 @@ GET /api/2014/spells/acid-arrow?lang=de
 The `Accept-Language` request header is also supported per [RFC 5646](https://www.rfc-editor.org/rfc/rfc5646). If both a `lang` query parameter and an `Accept-Language` header are present, the query parameter takes precedence.
 
 ```
-Accept-Language: de
+Accept-Language: fr-FR
 ```
 
-Language codes follow the [BCP 47](https://www.rfc-editor.org/rfc/rfc5646) standard (e.g. `de`, `fr`, `pt-BR`).
+Language codes follow the [BCP 47](https://www.rfc-editor.org/rfc/rfc5646) standard (e.g. `fr-FR`, `pt-BR`).
 
 ## Response Behavior
 
@@ -75,8 +77,8 @@ Returns all languages that have at least some translated content for the given r
 {
   "count": 2,
   "results": [
-    { "lang": "de", "url": "/api/2014/locales/de" },
-    { "lang": "fr", "url": "/api/2014/locales/fr" }
+    { "lang": "fr-FR", "url": "/api/2014/locales/fr-FR" },
+    { "lang": "pt-BR", "url": "/api/2014/locales/pt-BR" }
   ]
 }
 ```
@@ -91,8 +93,8 @@ Returns `404` if no translations exist for the requested language.
 
 ```json
 {
-  "lang": "de",
-  "url": "/api/2014/locales/de"
+  "lang": "fr-FR",
+  "url": "/api/2014/locales/fr-FR"
 }
 ```
 
@@ -102,7 +104,7 @@ The optional `lang` argument is available on entity queries:
 
 ```graphql
 query {
-  spell(index: "acid-arrow", lang: "de") {
+  spell(index: "acid-arrow", lang: "fr-FR") {
     name
     desc
   }
@@ -120,18 +122,18 @@ Translations are entirely community-driven. No database access or special toolin
 3. Include only the translatable fields for each entry — non-translatable fields are sourced from the English base automatically
 4. Open a PR — CI validates your translation against the English source
 
-**Example — German spell translation entry:**
+**Example — French spell translation entry:**
 
 ```json
 [
   {
     "index": "acid-arrow",
-    "name": "Säurepfeil",
+    "name": "Flèche acide",
     "desc": [
-      "Ein glitzernder grüner Pfeil schießt auf ein Ziel..."
+      "Une flèche verte scintillante jaillit vers une cible..."
     ],
     "higher_level": [
-      "Wenn du diesen Zauber mit einem Zauberplatz der 3. Stufe oder höher wirkst..."
+      "Lorsque vous lancez ce sort avec un emplacement de sort de niveau 3 ou supérieur..."
     ]
   }
 ]
