@@ -10,6 +10,13 @@ updates:
     schedule:
       interval: "weekly"
     groups:
+      react:
+        patterns:
+          - "react"
+          - "react-dom"
+          - "react-*"
+          - "@types/react"
+          - "@types/react-dom"
       docusaurus:
         patterns:
           - "@docusaurus/*"
