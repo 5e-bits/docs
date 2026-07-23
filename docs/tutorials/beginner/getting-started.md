@@ -15,9 +15,6 @@ definitions below and send requests directly from the endpoint documentation!
 
 For example, if you paste and run this terminal command:
 
-<Tabs queryString="os">
-<TabItem value="unix" label="cURL">
-
 ```bash
 curl -X GET "https://www.dnd5eapi.co/api/ability-scores/cha" -H "Accept: application/json"
 
@@ -25,15 +22,9 @@ curl -X GET "https://www.dnd5eapi.co/api/ability-scores/cha" -H "Accept: applica
 http dnd5eapi.co/api/ability-scores/cha
 ```
 
-</TabItem>
-<TabItem value="win" label="PowerShell">
-
 ```powershell
 Invoke-RestMethod -Uri https://www.dnd5eapi.co/api/ability-scores/cha
 ```
-
-</TabItem>
-</Tabs>
 
 We should see a result containing details about the Charisma ability score:
 

@@ -14,16 +14,10 @@ The currently available tutorials are:
 
 Beginner tutorials are designed to help you get started programming using the API as a learning environment. They are intended for people who have done little to no programming and are completely new to APIs.
 
-<TutorialsList category="beginner" />
-
 ## Basic
 
 Basic tutorials are designed to help you get started with the API. They are intended for people who have done some programming and are new to the API.
 
-<TutorialsList category="basic" />
-
 ## Advanced
 
 Advanced tutorials are designed to help you build more complex applications with the API. They are intended for developers who are comfortable with programming and want to build more advanced applications.
-
-<TutorialsList category="advanced" />

@@ -383,12 +383,6 @@ import LearningObjectives from '@site/src/components/LearningObjectives';
 
 Welcome to this step-by-step tutorial on building an interactive monster search using JavaScript! If you have moderate experience with JavaScript, you're in the right place. By the end of this tutorial, you'll have a simple web application that allows users to search for and view Dungeons & Dragons 5th Edition (D&D 5e) monsters.
 
-<LearningObjectives objectives={[
-  "Learn to make a simple HTML webpage",
-  "Learn to interact with the API using HTTP requests in Javascript",
-  "Learn to create a form that allows users to get monsters from the API"
-]}/>
-
 ## Setting Up the Project
 
 1. **Create a New Directory:** Start by creating a new directory for your project. You can name it something like "monster-search-app".
@@ -423,12 +417,12 @@ Let's start by creating the HTML structure for our web application:
     <title>Monster Search</title>
   </head>
   <body>
-    
-      Monster Search
+    <div class="container">
+      <h1>Monster Search</h1>
       <input type="text" id="monsterInput" placeholder="Enter a monster name" />
       <button id="searchButton">Search</button>
-      
-    
+      <div id="monsterResult" class="monster-result"></div>
+    </div>
     <script src="script.js"></script>
   </body>
 </html>
@@ -525,8 +519,8 @@ function searchMonster(monsterName) {
           .then((monsterResponse) => {
             const monsterData = monsterResponse.data;
             monsterResult.innerHTML = `
-              ${monsterData.name}
-              Index: ${monsterData.index}
+              <h2>${monsterData.name}</h2>
+              <p><strong>Index:</strong> ${monsterData.index}</p>
               <!-- You can display more monster details here -->
             `;
           })
@@ -579,13 +573,6 @@ By the end of this tutorial we'll have a web application that lists every spell 
 - Add filters to only show spells of specific levels
 - Add a shuffle button that picks a random spell
 - Add a search bar that searches through spell names & descriptions
-
-<LearningObjectives
-  objectives={[
-    "Learn to interact with the API using HTTP requests in JavaScript",
-    "Learn to create reusable React components",
-  ]}
-/>
 
 ## Setting Up the Project
 
@@ -677,13 +664,13 @@ export default function App() {
   }, []);
 
   return (
-    
-      
+    <div className="App">
+      <ul>
         {spells.map((spell) => (
-          {spell.name}
+          <li key={spell.index}>{spell.name}</li>
         ))}
-      
-    
+      </ul>
+    </div>
   );
 }
 ```
@@ -693,34 +680,34 @@ Alright! Now our app shows a bulleted list of spells. This is a great start, but
 ```jsx title="/src/SpellCard.jsx"
 export default function SpellCard({ spell }) {
   return (
-    
+    <li className="spell-card">
       <hgroup>
-        {spell.name}
+        <h4>{spell.name}</h4>
         <small>
           {spell.level > 0 && `Level ${spell.level} `}
           {spell.school.name}
           {spell.level === 0 && " cantrip"}
         </small>
       </hgroup>
-      
-        
-          Casting Time
+      <div className="stats">
+        <p>
+          <strong>Casting Time</strong>
           {spell.casting_time}
-        
-        
-          Range
+        </p>
+        <p>
+          <strong>Range</strong>
           {spell.range}
-        
-        
-          Components
+        </p>
+        <p>
+          <strong>Components</strong>
           {spell.components.join(", ")}
-        
-        
-          Duration
+        </p>
+        <p>
+          <strong>Duration</strong>
           {spell.duration}
-        
-      
-    
+        </p>
+      </div>
+    </li>
   );
 }
 ```
@@ -741,13 +728,13 @@ export default function App() {
   }, []);
 
   return (
-    
-      
+    <div className="App">
+      <ul className="spell-list">
         {spells.map((spell) => (
           <SpellCard key={spell.index} spell={spell} />
         ))}
-      
-    
+      </ul>
+    </div>
   );
 }
 ```
@@ -780,14 +767,14 @@ First, we'll add an indicator that we're loading. Let's just keep it plain text 
 
 ```jsx title="/src/App.jsx"
 return (
-  
-    {spells.length === 0 && Loading...}
-    
+  <div className="App">
+    {spells.length === 0 && <span className="loading">Loading...</span>}
+    <ul className="spell-list">
       {spells.map((spell) => (
         <SpellCard key={spell.index} spell={spell} />
       ))}
-    
-  
+    </ul>
+  </div>
 );
 ```
 
@@ -813,13 +800,6 @@ And boom! Now the page will render our saved list and then update with the new l
 import LearningObjectives from '@site/src/components/LearningObjectives';
 
 # Command Line Spellbook with Python
-
-<LearningObjectives objectives={[
-    "Learn how to interact with APIs using Python",
-    "Learn to write a simple Python script",
-    "Learn to make a script interactive",
-    "Create a simple tool to explore D&D spells right from your terminal"
-]}/>
 
 ## Setting Up the Project
 
@@ -909,12 +889,6 @@ Remember, practice is essential for becoming a proficient developer. Keep coding
 import LearningObjectives from '@site/src/components/LearningObjectives';
 
 # Discover D&D Races with Shell Scripting
-
-<LearningObjectives objectives={[
-    "Learn to use cURL",
-    "Learn to write a simple Bash script",
-    "Learn to make a script interactive"
-]}/>
 
 ## Preparing Your Bash Adventure
 
@@ -1025,9 +999,6 @@ definitions below and send requests directly from the endpoint documentation!
 
 For example, if you paste and run this terminal command:
 
-<Tabs queryString="os">
-<TabItem value="unix" label="cURL">
-
 ```bash
 curl -X GET "https://www.dnd5eapi.co/api/ability-scores/cha" -H "Accept: application/json"
 
@@ -1035,15 +1006,9 @@ curl -X GET "https://www.dnd5eapi.co/api/ability-scores/cha" -H "Accept: applica
 http dnd5eapi.co/api/ability-scores/cha
 ```
 
-</TabItem>
-<TabItem value="win" label="PowerShell">
-
 ```powershell
 Invoke-RestMethod -Uri https://www.dnd5eapi.co/api/ability-scores/cha
 ```
-
-</TabItem>
-</Tabs>
 
 We should see a result containing details about the Charisma ability score:
 
@@ -1091,14 +1056,6 @@ import LearningObjectives from "@site/src/components/LearningObjectives";
 # GraphQL Fundamentals
 
 GraphQL is a powerful and flexible way to fetch data from the D&D 5e SRD API. In this tutorial, we will learn how to build and try out a range of GraphQL queries using the [Apollo Sandbox Explorer](https://studio.apollographql.com/sandbox?endpoint=https%3A%2F%2Fwww.dnd5eapi.co%2Fgraphql%2F2014).
-
-<LearningObjectives
-  objectives={[
-    "Understand the limitations of the RESTful API",
-    "Understand how the GraphQL API solves these limitations",
-    "Build and test GraphQL queries with Apollo Sandbox Explorer",
-  ]}
-/>
 
 ## From REST to GraphQL
 
@@ -1228,16 +1185,10 @@ The currently available tutorials are:
 
 Beginner tutorials are designed to help you get started programming using the API as a learning environment. They are intended for people who have done little to no programming and are completely new to APIs.
 
-<TutorialsList category="beginner" />
-
 ## Basic
 
 Basic tutorials are designed to help you get started with the API. They are intended for people who have done some programming and are new to the API.
 
-<TutorialsList category="basic" />
-
 ## Advanced
 
 Advanced tutorials are designed to help you build more complex applications with the API. They are intended for developers who are comfortable with programming and want to build more advanced applications.
-
-<TutorialsList category="advanced" />

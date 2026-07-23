@@ -11,13 +11,6 @@ import LearningObjectives from '@site/src/components/LearningObjectives';
 
 # Command Line Spellbook with Python
 
-<LearningObjectives objectives={[
-    "Learn how to interact with APIs using Python",
-    "Learn to write a simple Python script",
-    "Learn to make a script interactive",
-    "Create a simple tool to explore D&D spells right from your terminal"
-]}/>
-
 ## Setting Up the Project
 
 1. **Create a New Directory:** Start by creating a new directory for your project. Let's call it "spellbook-cli".

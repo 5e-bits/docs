@@ -19,13 +19,6 @@ By the end of this tutorial we'll have a web application that lists every spell 
 - Add a shuffle button that picks a random spell
 - Add a search bar that searches through spell names & descriptions
 
-<LearningObjectives
-  objectives={[
-    "Learn to interact with the API using HTTP requests in JavaScript",
-    "Learn to create reusable React components",
-  ]}
-/>
-
 ## Setting Up the Project
 
 We'll be using [CodeSandbox](https://codesandbox.io) for this project because it gives us a quick starting point for our React code. Anything you write in your CodeSandbox project should be easily transportable to whatever React project you want to build.
@@ -116,13 +109,13 @@ export default function App() {
   }, []);
 
   return (
-    
-      
+    <div className="App">
+      <ul>
         {spells.map((spell) => (
-          {spell.name}
+          <li key={spell.index}>{spell.name}</li>
         ))}
-      
-    
+      </ul>
+    </div>
   );
 }
 ```
@@ -132,34 +125,34 @@ Alright! Now our app shows a bulleted list of spells. This is a great start, but
 ```jsx title="/src/SpellCard.jsx"
 export default function SpellCard({ spell }) {
   return (
-    
+    <li className="spell-card">
       <hgroup>
-        {spell.name}
+        <h4>{spell.name}</h4>
         <small>
           {spell.level > 0 && `Level ${spell.level} `}
           {spell.school.name}
           {spell.level === 0 && " cantrip"}
         </small>
       </hgroup>
-      
-        
-          Casting Time
+      <div className="stats">
+        <p>
+          <strong>Casting Time</strong>
           {spell.casting_time}
-        
-        
-          Range
+        </p>
+        <p>
+          <strong>Range</strong>
           {spell.range}
-        
-        
-          Components
+        </p>
+        <p>
+          <strong>Components</strong>
           {spell.components.join(", ")}
-        
-        
-          Duration
+        </p>
+        <p>
+          <strong>Duration</strong>
           {spell.duration}
-        
-      
-    
+        </p>
+      </div>
+    </li>
   );
 }
 ```
@@ -180,13 +173,13 @@ export default function App() {
   }, []);
 
   return (
-    
-      
+    <div className="App">
+      <ul className="spell-list">
         {spells.map((spell) => (
           <SpellCard key={spell.index} spell={spell} />
         ))}
-      
-    
+      </ul>
+    </div>
   );
 }
 ```
@@ -219,14 +212,14 @@ First, we'll add an indicator that we're loading. Let's just keep it plain text 
 
 ```jsx title="/src/App.jsx"
 return (
-  
-    {spells.length === 0 && Loading...}
-    
+  <div className="App">
+    {spells.length === 0 && <span className="loading">Loading...</span>}
+    <ul className="spell-list">
       {spells.map((spell) => (
         <SpellCard key={spell.index} spell={spell} />
       ))}
-    
-  
+    </ul>
+  </div>
 );
 ```
 
