@@ -5,15 +5,13 @@
 import Tabs from '@theme/Tabs';
 import TabItem from '@theme/TabItem';
 
-# Getting Started
-
-Let's make our first API request to the D&D 5th Edition API!
-
 Open up a terminal and use [cURL](http://curl.haxx.se/), [PowerShell](https://learn.microsoft.com/en-us/powershell/), or [httpie](http://httpie.org/)
 to make an API request for a resource. You can also scroll through the
 definitions below and send requests directly from the endpoint documentation!
 
 For example, if you paste and run this terminal command:
+
+**cURL**
 
 ```bash
 curl -X GET "https://www.dnd5eapi.co/api/ability-scores/cha" -H "Accept: application/json"
@@ -21,6 +19,8 @@ curl -X GET "https://www.dnd5eapi.co/api/ability-scores/cha" -H "Accept: applica
 # or with httpie
 http dnd5eapi.co/api/ability-scores/cha
 ```
+
+**PowerShell**
 
 ```powershell
 Invoke-RestMethod -Uri https://www.dnd5eapi.co/api/ability-scores/cha

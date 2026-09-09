@@ -2,10 +2,6 @@
 
 > Welcome to the D&D 5e SRD API, the Dungeons & Dragons 5th Edition API.
 
-# Introduction
-
-Welcome to the D&D 5e SRD API, the Dungeons & Dragons 5th Edition API.
-
 This documentation will help you familiarize yourself with the resources available and how to consume them with HTTP requests. Read through the getting started [tutorial](/docs/tutorials/) before you dive in.
 
 ## Base URL

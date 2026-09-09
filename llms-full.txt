@@ -6,40 +6,39 @@ This file contains all documentation content in a single document following the 
 
 ## FAQ
 
-
-### A monster, spell, subclass, etc. is missing from the API / Database. Can I add it?
+#### A monster, spell, subclass, etc. is missing from the API / Database. Can I add it?
 
 Please check if the data is within [the SRD.](https://media.wizards.com/2016/downloads/DND/SRD-OGL_V5.1.pdf) If it is, feel free to open an issue or PR to add it yourself. Otherwise, due to legal reasons, we cannot add it.
 
 [This reddit post is a good explanation of how this works.](https://www.reddit.com/r/DnD/comments/hqw3jx/til_that_the_spell_tashas_hideous_laughter_was/fy0q5ej/)
 
-### What is the SRD?
+#### What is the SRD?
 
 The SRD, or Systems Reference Document, contains guidelines for publishing content under the OGL. This allows for some of the data for D&D 5e to be open source. The API only covers data that can be found in the SRD. [Here's a link to the full text of the SRD.](https://media.wizards.com/2016/downloads/DND/SRD-OGL_V5.1.pdf)
 
-### What is the OGL?
+#### What is the OGL?
 
 The Open Game License (OGL) is a public copyright license by Wizards of the Coast that may be used by tabletop role-playing game developers to grant permission to modify, copy, and redistribute some of the content designed for their games, notably game mechanics. However, they must share-alike copies and derivative works. [More information about the OGL can be found here.](https://en.wikipedia.org/wiki/Open_Game_License)
 
-### Can this API be self hosted?
+#### Can this API be self hosted?
 
 Yes it can! You can also host the data yourself if you don't want to use the API at all. You can also make changes and add extra data if you like. However, it is up to you to merge in new changes to the data and API.
 
-### Can I publish is on `insert platform`? Is this free use?
+#### Can I publish is on `insert platform`? Is this free use?
 
 Yes, you can. The API itself is under the [MIT license](https://opensource.org/licenses/MIT), and the underlying data accessible via the API is supported under the SRD and OGL.
 
-### Is there a limit to the number of calls I can make at a time?
+#### Is there a limit to the number of calls I can make at a time?
 
 Yes. Currently there is a limiter in place for 10k requests per second per IP. This is subject to change if something more practical needs to be enforced.
 
-### Am I allowed to/Is it legal to put more than just SRD content in my own version of this API? Is it legal for me to do `insert questionable idea`?
+#### Am I allowed to/Is it legal to put more than just SRD content in my own version of this API? Is it legal for me to do `insert questionable idea`?
 
 ¯\\\_(ツ)\_/¯ I am not a lawyer, so do this at your own risk. However, one of our users made a wonderful flow chart that can help point you in the right direction. I must stress the point that this is not legal advice though.
 
 ![Copyrights Flowchart](/img/faq/copyrightsFlowchart.png)
 
-### How can I help fund this project?
+#### How can I help fund this project?
 
 To be completely transparent, this project only costs me $7/mo to run. However, if you want to [help fund it anyways](https://ko-fi.com/bagelbits).
 
@@ -49,15 +48,14 @@ You can also find links on both repos.
 
 ## GraphQL
 
-
 This API supports [GraphQL](https://graphql.org/). The GraphQL URL for this API
 is `https://www.dnd5eapi.co/graphql/2014`. Most of your questions regarding the GraphQL schema can be answered by querying the endpoint with the Apollo sandbox explorer.
 
-## Example Queries
+### Example Queries
 
 Here is a list of example queries you can run in the sandbox explorer to get started trying out the GraphQL functionality of the API.
 
-### Get a list of ability scores
+#### Get a list of ability scores
 
 ```graphql
 query {
@@ -75,12 +73,11 @@ query {
 
 ## Introduction
 
-
 Welcome to the D&D 5e SRD API, the Dungeons & Dragons 5th Edition API.
 
 This documentation will help you familiarize yourself with the resources available and how to consume them with HTTP requests. Read through the getting started [tutorial](/docs/tutorials/) before you dive in.
 
-## Base URL
+### Base URL
 
 All API requests are made to the following base URL:
 
@@ -88,21 +85,21 @@ All API requests are made to the following base URL:
 https://www.dnd5eapi.co/api
 ```
 
-## Authentication
+### Authentication
 
 This is a completely open API. **No authentication is required to query and get data.** This also means that we've limited what you can do to just `GET`-ing the data.
 
-## Rate Limits
+### Rate Limits
 
 There is a limit of 10,000 requests per second per IP. This is subject to change if something more practical needs to be enforced.
 
-## Multilingual Support
+### Multilingual Support
 
 API responses are available in multiple languages. Append `?lang={code}` to any resource request to receive translated content (e.g. `?lang=fr-FR` for French). English is always the default and fallback — untranslated fields are returned in English automatically.
 
 See the [Multilingual Support](./reference/multilingual) reference for the full list of supported languages, response behavior, and how to contribute a translation.
 
-## GraphQL
+### GraphQL
 
 This API also supports [GraphQL](https://graphql.org/). The GraphQL endpoint is:
 
@@ -112,11 +109,11 @@ https://www.dnd5eapi.co/graphql
 
 See the [GraphQL tutorial](/docs/tutorials/beginner/graphql) for examples and how to use the Apollo sandbox explorer.
 
-## Community
+### Community
 
 Come hang out with us [on Discord](https://discord.gg/TQuYTv7). We're friendly and would love to hear what you make with the API.
 
-## Contributing
+### Contributing
 
 This API is built from two repositories:
 
@@ -131,10 +128,9 @@ If you find a mistake in the data, feel free to [let us know](https://discord.gg
 
 ## Multilingual Support
 
-
 The D&D 5e SRD API supports multilingual responses, allowing you to request translated content in supported languages. English is always the default and fallback — if a translation is incomplete or unavailable, fields fall back to English individually, so responses are always complete documents.
 
-## Currently Supported Locales
+### Currently Supported Locales
 
 Locale availability differs per ruleset year — the 2014 and 2024 catalogs do not have to ship the same translations.
 
@@ -146,9 +142,9 @@ Locale availability differs per ruleset year — the 2014 and 2024 catalogs do n
 
 This table reflects locales with translated content at the time of writing. The authoritative, always-current list is served by the API itself — query [`/api/{year}/locales`](#list-all-supported-locales) to discover the locales available for a given ruleset year at runtime.
 
-## Requesting a Language
+### Requesting a Language
 
-### Query Parameter (recommended)
+#### Query Parameter (recommended)
 
 Append `?lang={code}` to any resource request. This is the recommended approach because it is explicit and cache-friendly.
 
@@ -156,7 +152,7 @@ Append `?lang={code}` to any resource request. This is the recommended approach 
 GET /api/2014/spells/acid-arrow?lang=fr-FR
 ```
 
-### Accept-Language Header
+#### Accept-Language Header
 
 The `Accept-Language` request header is also supported per [RFC 5646](https://www.rfc-editor.org/rfc/rfc5646). If both a `lang` query parameter and an `Accept-Language` header are present, the query parameter takes precedence.
 
@@ -166,13 +162,13 @@ Accept-Language: fr-FR
 
 Language codes follow the [BCP 47](https://www.rfc-editor.org/rfc/rfc5646) standard (e.g. `fr-FR`, `pt-BR`).
 
-## Response Behavior
+### Response Behavior
 
 - Translated fields are merged over the base English document on a **per-field basis**.
 - Untranslated fields always retain their English value — responses are never partial.
 - The `Content-Language` response header reflects the requested language when at least one field was translated, or `en` when no translation exists for that document.
 
-## Translatable Fields
+### Translatable Fields
 
 Only human-readable text fields are translated. Structural fields (indexes, URLs, numeric values, cross-references) always come from the English base document.
 
@@ -187,13 +183,13 @@ Only human-readable text fields are translated. Structural fields (indexes, URLs
 | Numeric values (HP, range, duration, etc.) | No |
 | API reference objects | No |
 
-## Discovering Supported Languages
+### Discovering Supported Languages
 
 :::note
 `/api/{year}/languages` lists D&D in-world game languages (Common, Elvish, etc.). `/api/{year}/locales` is the endpoint for API translation support.
 :::
 
-### List all supported locales
+#### List all supported locales
 
 ```
 GET /api/{year}/locales
@@ -211,7 +207,7 @@ Returns all languages that have at least some translated content for the given r
 }
 ```
 
-### Get a specific locale
+#### Get a specific locale
 
 ```
 GET /api/{year}/locales/{lang}
@@ -226,7 +222,7 @@ Returns `404` if no translations exist for the requested language.
 }
 ```
 
-## GraphQL
+### GraphQL
 
 The optional `lang` argument is available on entity queries:
 
@@ -241,7 +237,7 @@ query {
 
 Translation resolution is identical to REST — translated fields are merged before the resolver returns, with English as the per-field fallback.
 
-## Contributing Translations
+### Contributing Translations
 
 Translations are entirely community-driven. No database access or special tooling is required.
 
@@ -273,10 +269,9 @@ See [`CONTRIBUTING.md`](https://github.com/5e-bits/5e-database/blob/main/CONTRIB
 
 ## Schemas
 
-
 Definitions of all schemas will be accessible in a future update. Two of the most common schemas are described here.
 
-## API Reference
+### API Reference
 
 Represents a minimal representation of a resource. The detailed representation of the referenced resource can be retrieved by making a request to the referenced `URL`.
 
@@ -289,7 +284,7 @@ APIReference {
 }
 ```
 
-## Difficulty Check (DC)
+### Difficulty Check (DC)
 
 Represents a difficulty check.
 
@@ -301,7 +296,7 @@ DC {
 }
 ```
 
-## Damage
+### Damage
 
 Represents damage.
 
@@ -312,7 +307,7 @@ Damage {
 }
 ```
 
-## Choice
+### Choice
 
 Represents a choice made by a player. Commonly seen related to decisions made during character creation or combat (e.g.: the description of the cleric class, under **Proficiencies**, states "Skills: Choose two from	History, Insight, Medicine, Persuasion, and	Religion" [[SRD p15]](https://media.wizards.com/2016/downloads/DND/SRD-OGL_V5.1.pdf#page=15))
 
@@ -325,7 +320,7 @@ Choice {
 }
 ```
 
-## OptionSet
+### OptionSet
 
 The OptionSet structure provides the options to be chosen from, or sufficient data to fetch and interpret the options. All OptionSets have an `option_set_type` attribute that indicates the structure of the object that contains the options. The possible values are `options_array`, `equipment_category`, and `reference_list`. Other attributes on the OptionSet depend on the value of this attribute.
 
@@ -336,7 +331,7 @@ The OptionSet structure provides the options to be chosen from, or sufficient da
 - `resource_list`
     - `resource_list_url` (string): A reference (by URL) to a collection in the database. The URL may include query parameters. Each item in the resulting ResourceList's `results` array represents one option that can be chosen.
 
-## Option
+### Option
 
 When the options are given in an `options_array`, each item in the array inherits from the Option structure. All Options have an `option_type` attribute that indicates the structure of the option. The value of this attribute indicates how the option should be handled, and each type has different attributes. The possible values and their corresponding attributes are listed below.
 
@@ -379,11 +374,11 @@ When the options are given in an `options_array`, each item in the array inherit
 
 import LearningObjectives from '@site/src/components/LearningObjectives';
 
-# Interactive Monster Search with JavaScript
+
 
 Welcome to this step-by-step tutorial on building an interactive monster search using JavaScript! If you have moderate experience with JavaScript, you're in the right place. By the end of this tutorial, you'll have a simple web application that allows users to search for and view Dungeons & Dragons 5th Edition (D&D 5e) monsters.
 
-## Setting Up the Project
+### Setting Up the Project
 
 1. **Create a New Directory:** Start by creating a new directory for your project. You can name it something like "monster-search-app".
 
@@ -401,9 +396,9 @@ Welcome to this step-by-step tutorial on building an interactive monster search 
 
 4. **Create Files:** Inside your project directory, create three files: `index.html`, `styles.css`, and `script.js`.
 
-## Building the Frontend
+### Building the Frontend
 
-### `index.html`
+#### `index.html`
 
 Let's start by creating the HTML structure for our web application:
 
@@ -428,7 +423,7 @@ Let's start by creating the HTML structure for our web application:
 </html>
 ```
 
-### `styles.css`
+#### `styles.css`
 
 Let's style our web application to make it visually appealing:
 
@@ -482,9 +477,9 @@ h1 {
 }
 ```
 
-## Adding Functionality with JavaScript
+### Adding Functionality with JavaScript
 
-### `script.js`
+#### `script.js`
 
 Now, let's add the functionality to our web application using JavaScript:
 
@@ -537,7 +532,7 @@ function searchMonster(monsterName) {
 }
 ```
 
-## Testing the Application
+### Testing the Application
 
 1. Open your terminal and navigate to the project directory.
 
@@ -549,7 +544,7 @@ function searchMonster(monsterName) {
 
 3. Visit `http://localhost:5000` in your web browser to see the monster search application in action.
 
-## Conclusion
+### Conclusion
 
 Congratulations! You've successfully built an interactive monster search web application using JavaScript, HTML, and CSS. Users can now search for D&D 5e monsters and view their details.
 
@@ -559,7 +554,7 @@ Congratulations! You've successfully built an interactive monster search web app
 
 import LearningObjectives from "@site/src/components/LearningObjectives";
 
-# Creating a Spell Card Library with React
+
 
 This tutorial assumes you have basic knowledge of CSS, React and JavaScript. Specifically,
 
@@ -574,11 +569,11 @@ By the end of this tutorial we'll have a web application that lists every spell 
 - Add a shuffle button that picks a random spell
 - Add a search bar that searches through spell names & descriptions
 
-## Setting Up the Project
+### Setting Up the Project
 
 We'll be using [CodeSandbox](https://codesandbox.io) for this project because it gives us a quick starting point for our React code. Anything you write in your CodeSandbox project should be easily transportable to whatever React project you want to build.
 
-### Making your Project on CodeSandbox
+#### Making your Project on CodeSandbox
 
 We'll be creating a new **React** project. If you feel comfortable with TypeScript you can use the **React TypeScript** project just as well.
 
@@ -589,7 +584,7 @@ flowchart LR
     3[React]
 ```
 
-### Adding some Code
+#### Adding some Code
 
 **Setup an api file to help make fetching from the D&D 5e API easier.** This keeps our api code in one place and lets us easily extend it if we want to add more endpoints. Click on the "New File" button next to the `src` folder in your CodeSandbox sidebar and make a new file called `api.js`:
 
@@ -620,7 +615,7 @@ If we run this function that we're exporting, we get a response of the following
 }
 ```
 
-## Setting up our Data
+### Setting up our Data
 
 The `index` is the unique id of this spell, `name` is a formatted string we can show our users, and `url` is a path to the spell in the API.
 
@@ -647,7 +642,7 @@ This might lag, but we'll figure that out later.
 
 If we run the function now, we'll get a lot more information from our spells. We mostly care about `name`, `level`, and `desc` for now but you can see everything the endpoint gives you [in the API reference](/docs/api/get-a-spell-by-index)
 
-## Rendering our Spell Cards
+### Rendering our Spell Cards
 
 `App.jsx` is where the bulk of our code will be. We have to load the spells when we mount the component, and then loop through our spells and render each one.
 
@@ -757,7 +752,7 @@ And now that we have some more details displaying, let's hop into the styles and
 
 Looking good! We can review [the entire project](https://codesandbox.io/s/d-d-5e-spell-cards-jsvnct) and see how all our code came together in the end!
 
-## Bonus
+### Bonus
 
 Depending on our connection, these cards could take a hot minute to load! Let's add a loading indicator and make sure we're caching the request so subsequent visits can be faster.
 
@@ -799,17 +794,17 @@ And boom! Now the page will render our saved list and then update with the new l
 
 import LearningObjectives from '@site/src/components/LearningObjectives';
 
-# Command Line Spellbook with Python
 
-## Setting Up the Project
+
+### Setting Up the Project
 
 1. **Create a New Directory:** Start by creating a new directory for your project. Let's call it "spellbook-cli".
 
 2. **Create a Python Script:** Inside the project directory, create a file named `spellbook.py`.
 
-## Building the Command-Line Spellbook
+### Building the Command-Line Spellbook
 
-### `spellbook.py`
+#### `spellbook.py`
 
 Let's start building our command-line spellbook:
 
@@ -864,7 +859,7 @@ if __name__ == "__main__":
     main()
 ```
 
-## Running the Spellbook
+### Running the Spellbook
 
 1. Open your terminal and navigate to the project directory.
 
@@ -876,7 +871,7 @@ if __name__ == "__main__":
 
 3. Follow the on-screen prompts to explore and search for D&D 5e spells right from your command line.
 
-## Conclusion
+### Conclusion
 
 Congratulations! You've successfully built an interactive command-line spellbook using Python. This tool allows you to list all spells, search for spells by name, and exit the application. As you become more comfortable with Python programming, you can explore adding more features, improving user experience, or integrating additional APIs.
 
@@ -888,9 +883,9 @@ Remember, practice is essential for becoming a proficient developer. Keep coding
 
 import LearningObjectives from '@site/src/components/LearningObjectives';
 
-# Discover D&D Races with Shell Scripting
 
-## Preparing Your Bash Adventure
+
+### Preparing Your Bash Adventure
 
 Before we set off on our coding journey, make sure you have these:
 
@@ -898,7 +893,7 @@ Before we set off on our coding journey, make sure you have these:
 2. An internet connection
 3. Your excitement and curiosity
 
-## Building the D&D Race Search Tool
+### Building the D&D Race Search Tool
 
 1. **Summon the Magic of Curl:**
 
@@ -944,7 +939,7 @@ Before we set off on our coding journey, make sure you have these:
 
     You'll be prompted to enter the name of a D&D race. For now, let's try "dwarf" and see what magnificent details unfold!
 
-## The Mystical Output Awaits!
+### The Mystical Output Awaits!
 
 Prepare yourself, for the secrets of the D&D Dwarf race shall be revealed before your very eyes! Once you enter "dwarf," you should expect an awe-inspiring response similar to this:
 
@@ -978,7 +973,7 @@ Enter the name of a D&D race: dwarf
 
 ```
 
-## Celebrate Your Coding Victory!
+### Celebrate Your Coding Victory!
 
 Congratulations, young adventurers! You've crafted your very own D&D Race Search Tool using Bash scripting. You can now explore different races and learn about their unique abilities, traits, and more. Your journey has just begun, and there's so much more to discover in the realm of coding and Dungeons & Dragons. May your code be bug-free and your rolls be critical hits! 🎉🏰🧝‍♂️
 
@@ -989,7 +984,7 @@ Congratulations, young adventurers! You've crafted your very own D&D Race Search
 import Tabs from '@theme/Tabs';
 import TabItem from '@theme/TabItem';
 
-# Getting Started
+
 
 Let's make our first API request to the D&D 5th Edition API!
 
@@ -999,12 +994,16 @@ definitions below and send requests directly from the endpoint documentation!
 
 For example, if you paste and run this terminal command:
 
+**cURL**
+
 ```bash
 curl -X GET "https://www.dnd5eapi.co/api/ability-scores/cha" -H "Accept: application/json"
 
 # or with httpie
 http dnd5eapi.co/api/ability-scores/cha
 ```
+
+**PowerShell**
 
 ```powershell
 Invoke-RestMethod -Uri https://www.dnd5eapi.co/api/ability-scores/cha
@@ -1053,11 +1052,11 @@ We should see a result containing details about the Charisma ability score:
 
 import LearningObjectives from "@site/src/components/LearningObjectives";
 
-# GraphQL Fundamentals
+
 
 GraphQL is a powerful and flexible way to fetch data from the D&D 5e SRD API. In this tutorial, we will learn how to build and try out a range of GraphQL queries using the [Apollo Sandbox Explorer](https://studio.apollographql.com/sandbox?endpoint=https%3A%2F%2Fwww.dnd5eapi.co%2Fgraphql%2F2014).
 
-## From REST to GraphQL
+### From REST to GraphQL
 
 In the [Getting Started](./getting-started.mdx) tutorial, we used `curl` to make an HTTP `GET` request to a specific URL that returned the data we wanted. Using that approach, the URL we made a request to corresponded directly to the resource we wanted to fetch; `/api/ability-scores/cha` refers to the resource within the `ability-scores` collection which has the index `cha`.
 
@@ -1071,7 +1070,7 @@ And what if we want to fetch the armor classes of _all_ of the monsters? Using t
 
 This is where GraphQL saves the day. GraphQL stands for "Graph Query Language". It is a computer language that allows us to query an API much more flexibly than is allowed by the REST API. GraphQL allows us to specify exactly which parts of a resource we want to receive, and to request that data for many resources all in one request. In this tutorial, we will look at how we can build and execute powerful queries against the D&D 5e SRD API using GraphQL.
 
-## Sandbox Explorer
+### Sandbox Explorer
 
 As well as data, GraphQL servers are able to serve their own schemas and documentation. This allows us to use tools such as the [Apollo Sandbox Explorer](https://studio.apollographql.com/sandbox?endpoint=https%3A%2F%2Fwww.dnd5eapi.co%2Fgraphql%2F2014) to discover the API's capabilities and to build and test our queries.
 
@@ -1081,7 +1080,7 @@ Open the explorer in a new tab now so that you can follow along with the tutoria
 
 On the left we can see the documentation - a list of all the resources we can query. In the middle are the text boxes where we can write our GraphQL query, as well as any variables that we might want to pass with the request. Finally on the right is the "Response" panel, where any results of queries we execute will be displayed.
 
-## Our First Query
+### Our First Query
 
 Let's start by getting a list of all the monsters in the database. To do this, we can build a query using the panel on the left-hand side of the explorer. Scroll down to "monsters" and click the <svg viewBox="0 0 24 24" role="checkbox" aria-checked="false" style={{width: '2ch', color: 'var(--ifm-color-primary-darker)', verticalAlign: 'text-top', marginInline: '0.25ch'}}><g fill="none" stroke="currentColor" strokeLinecap="round" strokeLinejoin="round" strokeWidth="2"><path d="M12 7.5v9M7.5 12h9M12 .75C18.213.75 23.25 5.787 23.25 12S18.213 23.25 12 23.25.75 18.213.75 12 5.787.75 12 .75z"></path></g></svg> ("plus") icon to the left. You should then be presented with a list of attributes that we can request. You should also see the following code appear in the editor:
 
@@ -1099,7 +1098,7 @@ From the list on the left-hand side, scroll down to the "Fields" section and sel
 
 In the results pane, we can see the list of all the monsters in the database, and each entry only has the attributes we requested.
 
-## Nested Attributes
+### Nested Attributes
 
 Now let's try getting the armor class of each monster. If we select the `armor_class` attribute from the list of fields, it appears in our query with a set of curly braces, like so:
 
@@ -1123,7 +1122,7 @@ Here we can see that each monster now has an array of possible armor classes, an
 
 Take a moment now to try building some queries of your own. Use the documentation on the left of the screen to build your queries, or for an extra challenge, try writing a query by hand.
 
-## Fetching a Single Resource
+### Fetching a Single Resource
 
 You may have noticed that each top-level field in the documentation comes in a singular and a plural form. For example, `abilityScore` and `abilityScores`, `monster` and `monsters`. The plural forms denote fields that allow us to query a collection of resources, as we have seen with the `monsters` field, but the singular forms (e.g. `monster`) allow us to query a single resource. All we need is the resource's `index`, which is its unique identifier.
 
@@ -1165,7 +1164,7 @@ To pass variables, we can provide a JSON object along with our request, where ea
 
 Execute the query and we should see the same results as before, except this time we can request a different monster just by changing the value of our `index` variable. Take this opportunity to pass in different indices and observe how this affects the response.
 
-## Next Steps
+### Next Steps
 
 Now that we can build and test a range of GraphQL queries, we are ready to apply these skills to a real project. In future tutorials, we will bring together GraphQL and other languages and technologies to build fun and interesting tools.
 
@@ -1175,20 +1174,20 @@ Now that we can build and test a range of GraphQL queries, we are ready to apply
 
 import TutorialsList from "@site/src/components/TutorialsList"
 
-# Tutorials
+
 
 Welcome to the tutorials section of the documentation. Here you will find a collection of tutorials that will help you get started with the API.
 
 The currently available tutorials are:
 
-## Beginner
+### Beginner
 
 Beginner tutorials are designed to help you get started programming using the API as a learning environment. They are intended for people who have done little to no programming and are completely new to APIs.
 
-## Basic
+### Basic
 
 Basic tutorials are designed to help you get started with the API. They are intended for people who have done some programming and are new to the API.
 
-## Advanced
+### Advanced
 
 Advanced tutorials are designed to help you build more complex applications with the API. They are intended for developers who are comfortable with programming and want to build more advanced applications.

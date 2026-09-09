@@ -4,10 +4,6 @@
 
 import LearningObjectives from "@site/src/components/LearningObjectives";
 
-# Creating a Spell Card Library with React
-
-This tutorial assumes you have basic knowledge of CSS, React and JavaScript. Specifically,
-
 - [How to write JSX](https://react.dev/learn/writing-markup-with-jsx)
 - [How to make and call asynchronous functions](https://javascript.info/async-await)
 

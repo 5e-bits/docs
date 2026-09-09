@@ -2,10 +2,6 @@
 
 > Definitions of all schemas will be accessible in a future update. Two of the most common schemas are described here.
 
-# Schemas
-
-Definitions of all schemas will be accessible in a future update. Two of the most common schemas are described here.
-
 ## API Reference
 
 Represents a minimal representation of a resource. The detailed representation of the referenced resource can be retrieved by making a request to the referenced `URL`.

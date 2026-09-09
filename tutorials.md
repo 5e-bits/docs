@@ -4,10 +4,6 @@
 
 import TutorialsList from "@site/src/components/TutorialsList"
 
-# Tutorials
-
-Welcome to the tutorials section of the documentation. Here you will find a collection of tutorials that will help you get started with the API.
-
 The currently available tutorials are:
 
 ## Beginner

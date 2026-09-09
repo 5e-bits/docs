@@ -1,15 +1,15 @@
 # Command Line Spellbook with Python
 
 > <LearningObjectives objectives={[
-    "Learn how to interact with APIs using Python",
-    "Learn to write a simple Python script",
-    "Learn to make a script interactive",
-    "Create a simple tool to explore D&D spells right from your terminal"
-]}/>
+>     "Learn how to interact with APIs using Python",
+>     "Learn to write a simple Python script",
+>     "Learn to make a script interactive",
+>     "Create a simple tool to explore D&D spells right from your terminal"
+> ]}/>
 
 import LearningObjectives from '@site/src/components/LearningObjectives';
 
-# Command Line Spellbook with Python
+
 
 ## Setting Up the Project
 

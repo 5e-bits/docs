@@ -4,10 +4,6 @@
 
 import LearningObjectives from '@site/src/components/LearningObjectives';
 
-# Interactive Monster Search with JavaScript
-
-Welcome to this step-by-step tutorial on building an interactive monster search using JavaScript! If you have moderate experience with JavaScript, you're in the right place. By the end of this tutorial, you'll have a simple web application that allows users to search for and view Dungeons & Dragons 5th Edition (D&D 5e) monsters.
-
 ## Setting Up the Project
 
 1. **Create a New Directory:** Start by creating a new directory for your project. You can name it something like "monster-search-app".

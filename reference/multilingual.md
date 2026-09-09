@@ -2,10 +2,6 @@
 
 > The D&D 5e SRD API supports multilingual responses, allowing you to request translated content in supported languages. English is always the default and fallback — if a translation is incomplete or unavailable, fields fall back to English individually, so responses are always complete documents.
 
-# Multilingual Support
-
-The D&D 5e SRD API supports multilingual responses, allowing you to request translated content in supported languages. English is always the default and fallback — if a translation is incomplete or unavailable, fields fall back to English individually, so responses are always complete documents.
-
 ## Currently Supported Locales
 
 Locale availability differs per ruleset year — the 2014 and 2024 catalogs do not have to ship the same translations.

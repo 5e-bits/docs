@@ -4,10 +4,6 @@
 
 import LearningObjectives from "@site/src/components/LearningObjectives";
 
-# GraphQL Fundamentals
-
-GraphQL is a powerful and flexible way to fetch data from the D&D 5e SRD API. In this tutorial, we will learn how to build and try out a range of GraphQL queries using the [Apollo Sandbox Explorer](https://studio.apollographql.com/sandbox?endpoint=https%3A%2F%2Fwww.dnd5eapi.co%2Fgraphql%2F2014).
-
 ## From REST to GraphQL
 
 In the [Getting Started](./getting-started.mdx) tutorial, we used `curl` to make an HTTP `GET` request to a specific URL that returned the data we wanted. Using that approach, the URL we made a request to corresponded directly to the resource we wanted to fetch; `/api/ability-scores/cha` refers to the resource within the `ability-scores` collection which has the index `cha`.

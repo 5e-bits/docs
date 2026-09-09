@@ -2,11 +2,7 @@
 
 > Please check if the data is within [the SRD.](https://media.wizards.com/2016/downloads/DND/SRD-OGL_V5.1.pdf) If it is, feel free to open an issue or PR to add it yourself. Otherwise, due to legal reasons, we cannot add it.
 
-# FAQ
-
 ### A monster, spell, subclass, etc. is missing from the API / Database. Can I add it?
-
-Please check if the data is within [the SRD.](https://media.wizards.com/2016/downloads/DND/SRD-OGL_V5.1.pdf) If it is, feel free to open an issue or PR to add it yourself. Otherwise, due to legal reasons, we cannot add it.
 
 [This reddit post is a good explanation of how this works.](https://www.reddit.com/r/DnD/comments/hqw3jx/til_that_the_spell_tashas_hideous_laughter_was/fy0q5ej/)
 
